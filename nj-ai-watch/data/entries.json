@@ -1,0 +1,265 @@
+[
+  {
+    "id": "ct-cart-act-healthcare-ai-carveout",
+    "date_published": "2026-06-02",
+    "title": "Connecticut AI Law Carves Out Clinical Support Tools but Not Humanlike Patient Chatbots",
+    "jurisdiction": "healthcare_regional",
+    "status": "enacted",
+    "affects": [
+      "hospital",
+      "practice"
+    ],
+    "summary_plain": "Connecticut signed a broad AI law in June 2026, the CART Act, that regulates consumer facing chatbots, employment AI, and synthetic content, with most obligations starting October 1 2026. The law exempts AI tools used only for health education, clinical support, medication reminders, or disease management from its consumer chatbot rules, but only if the tool does not present itself as a person, does not use humanlike features, and is not designed to meet social or emotional needs. Hospitals and practices serving Connecticut patients with any patient facing AI assistant need to check whether that tool actually qualifies for the exemption.",
+    "pov": "If your patient chatbot has a name, a friendly persona, or empathetic sounding language, do not assume the healthcare carveout covers you. Get counsel to check your specific tool against the exemption language before October 2026 rather than after a complaint.",
+    "source_name": "Connecticut General Assembly",
+    "source_url": "https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf",
+    "tags": [
+      "connecticut",
+      "cart-act",
+      "state-ai-law",
+      "chatbot",
+      "patient-engagement"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "ed-dear-colleague-ai-schools",
+    "date_published": "2025-07-22",
+    "title": "Education Department Tells Schools How Federal Funds Can Pay For AI",
+    "jurisdiction": "federal",
+    "status": "guidance",
+    "affects": [
+      "school_district"
+    ],
+    "summary_plain": "In July 2025 the U.S. Department of Education sent school districts and states a Dear Colleague Letter explaining that existing federal education grant funds may be used to buy or build AI tools for instruction, personalized learning, and teacher training, as long as the use follows the normal rules for that grant program. It does not create a new AI specific mandate or a new pot of money, and it does not require any district to adopt AI. It is guidance interpreting existing law, not a new regulation, so a district's own school board policy and state rules still govern whether and how to use it.",
+    "pov": "Treat this as permission, not a push. It tells your business office that federal grant dollars will not automatically be flagged for buying an AI tool, but every dollar still has to trace back to that grant's original allowable use rules, so get your grant compliance and curriculum staff in the same room before any purchase, not after.",
+    "source_name": "U.S. Department of Education",
+    "source_url": "https://www.ed.gov/media/document/opepd-ai-dear-colleague-letter-7222025-110427.pdf",
+    "tags": [
+      "education",
+      "k12",
+      "federal-funding",
+      "dear-colleague-letter",
+      "ai-in-schools"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "omb-m-25-22-ai-acquisition",
+    "date_published": "2025-04-03",
+    "title": "OMB Tells Federal Agencies How To Buy AI Systems Responsibly",
+    "jurisdiction": "federal",
+    "status": "enacted",
+    "affects": [
+      "municipality",
+      "county",
+      "school_district",
+      "authority"
+    ],
+    "summary_plain": "In April 2025 the White House Office of Management and Budget told federal agencies how they must buy and manage artificial intelligence systems, including rules on vendor lock in, data ownership, and testing before high risk uses. This memo binds only federal agencies, not New Jersey counties, municipalities, or school districts. But the vendors selling AI tools to Trenton and to your town are shaping their national contract templates around these same federal terms, so expect similar language such as data ownership, training restrictions, and performance monitoring to show up in your own procurement documents too.",
+    "pov": "This is free vendor leverage. Ask any AI company pitching your agency whether it will accept the same data ownership and training restrictions the federal government now requires of its own AI vendors, and treat a refusal as a red flag.",
+    "source_name": "Office of Management and Budget (OMB)",
+    "source_url": "https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf",
+    "tags": [
+      "procurement",
+      "omb",
+      "federal-agencies",
+      "ai-governance",
+      "vendor-contracts"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "nj-deepfake-law-a3540",
+    "date_published": "2025-04-02",
+    "title": "New Jersey Criminalizes Malicious AI Deepfakes",
+    "jurisdiction": "nj_legislative",
+    "status": "enacted",
+    "affects": [
+      "municipality",
+      "county",
+      "school_district",
+      "authority"
+    ],
+    "summary_plain": "New Jersey law now makes it a crime to create or share a fake AI generated photo, video, or audio recording of a real person for an unlawful purpose such as harassment, extortion, or influencing an election. It also lets the person targeted sue the creator for damages. Penalties can include up to five years in prison and fines up to $30,000. This matters for any local government office that handles elections, public complaints, or student discipline involving fake images or recordings.",
+    "pov": "This is a real criminal law with teeth, not a guidance document, so make sure your election officials and school administrators know it exists. Do not assume your IT vendor or communications staff already understands the difference between a prank and a felony.",
+    "source_name": "Office of the Governor of New Jersey",
+    "source_url": "https://www.nj.gov/governor_murphy/news/news/562025/approved/20250402a.shtml",
+    "tags": [
+      "deepfake",
+      "criminal-law",
+      "elections",
+      "harassment"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "nj-dcr-algorithmic-discrimination-guidance",
+    "date_published": "2025-01-09",
+    "title": "New Jersey Attorney General Issues Guidance on AI Hiring Discrimination",
+    "jurisdiction": "nj_state",
+    "status": "guidance",
+    "affects": [
+      "municipality",
+      "county",
+      "school_district",
+      "authority",
+      "hospital",
+      "practice"
+    ],
+    "summary_plain": "The New Jersey Division on Civil Rights says the state Law Against Discrimination applies fully to decisions made with AI tools, including software used to screen job applicants or evaluate employees. An employer can be held liable for discrimination caused by an AI tool even if the employer did not build the tool and did not know it was biased. The guidance recommends testing tools before and after use, telling applicants when AI is involved, and keeping a human able to review AI driven decisions.",
+    "pov": "If your HR department or a vendor uses AI to screen resumes or rank candidates, this guidance puts the legal risk on you, not the software company. Ask any HR tech vendor for their bias audit results in writing before you sign, not after a complaint arrives.",
+    "source_name": "New Jersey Office of the Attorney General, Division on Civil Rights",
+    "source_url": "https://www.njoag.gov/attorney-general-platkin-and-division-on-civil-rights-announce-new-guidance-on-algorithmic-discrimination-creation-of-civil-rights-innovation-lab/",
+    "tags": [
+      "hiring",
+      "discrimination",
+      "civil-rights",
+      "hr-technology"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "fda-ai-enabled-device-software-draft-guidance",
+    "date_published": "2025-01-06",
+    "title": "FDA Draft Guidance Sets Expectations for AI Enabled Medical Devices and Clinical Software",
+    "jurisdiction": "healthcare_regional",
+    "status": "proposed",
+    "affects": [
+      "hospital",
+      "practice"
+    ],
+    "summary_plain": "FDA published draft guidance in January 2025 spelling out what it wants to see in marketing submissions for AI enabled medical devices and software, including how a manufacturer plans to monitor and update the model after it ships. It is not finalized and not legally binding, but it tells hospitals and practices what documentation to demand from any vendor selling AI enabled diagnostic, monitoring, or clinical decision support software regulated as a device.",
+    "pov": "Do not wait for this to become final before using it as a procurement checklist. If a vendor cannot explain their training data, validation results, and plan for monitoring model drift in the terms this guidance describes, that is a real gap regardless of whether the guidance itself is technically still a draft.",
+    "source_name": "U.S. Food and Drug Administration",
+    "source_url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/artificial-intelligence-enabled-device-software-functions-lifecycle-management-and-marketing",
+    "tags": [
+      "fda",
+      "samd",
+      "medical-device",
+      "clinical-decision-support",
+      "premarket-submission"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "nj-doe-ai-resources-schools",
+    "date_published": "2024-06-01",
+    "title": "New Jersey Department of Education Publishes AI Resources for School Districts",
+    "jurisdiction": "nj_state",
+    "status": "guidance",
+    "affects": [
+      "school_district"
+    ],
+    "summary_plain": "The NJ Department of Education Office of Innovation published an overview of AI concepts, discussion questions for district leaders, and curated resources to help schools use AI for teaching and administration. The material is informational only and does not set a mandatory policy or require districts to adopt any specific rule. Districts are expected to write their own local AI policy, and NJDOE points toward outside model policies such as the one from the New Jersey School Boards Association as a starting point.",
+    "pov": "There is no state mandate here, which means your district is exposed if you have not adopted a written AI policy and something goes wrong with a student or a teacher using it. Do not wait for Trenton to make this decision for you, adopt a local policy now using the NJSBA model as a starting point.",
+    "source_name": "New Jersey Department of Education, Office of Innovation",
+    "source_url": "https://www.nj.gov/education/innovation/ai/",
+    "tags": [
+      "schools",
+      "education",
+      "guidance",
+      "classroom-ai"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "hhs-1557-ai-decision-support-tools",
+    "date_published": "2024-05-06",
+    "title": "HHS Section 1557 Rule Requires Hospitals and Practices to Vet AI Decision Support Tools for Bias",
+    "jurisdiction": "healthcare_regional",
+    "status": "enacted",
+    "affects": [
+      "hospital",
+      "practice"
+    ],
+    "summary_plain": "Any hospital, health system, or practice that receives federal funding through Medicare or Medicaid must identify patient care decision support tools, including AI and algorithmic tools, that use race, sex, age, disability, or other protected characteristics as inputs. Once identified, the organization has an ongoing duty to take reasonable steps to reduce the risk of discrimination from those tools. This covers everything from risk scores built into your EHR to third party AI used for triage or prior authorization support.",
+    "pov": "This is live federal law right now, not a proposal, even though the same rule's gender identity provisions are tangled up in court and HHS has gone quiet publicly. Do not let the political noise around one piece of the rule convince you the AI nondiscrimination piece went away too, get your vendor list and ask each vendor in writing whether protected characteristics feed their models.",
+    "source_name": "U.S. Department of Health and Human Services, Office for Civil Rights",
+    "source_url": "https://www.federalregister.gov/documents/2024/05/06/2024-08711/nondiscrimination-in-health-programs-and-activities",
+    "tags": [
+      "hipaa",
+      "1557",
+      "ocr",
+      "algorithmic-bias",
+      "clinical-decision-support",
+      "nondiscrimination"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "onc-hti1-dsi-transparency-hti5-rollback-proposed",
+    "date_published": "2024-01-09",
+    "title": "Certified EHR Transparency Rules for AI Features Are in Effect but Face a Proposed Rollback",
+    "jurisdiction": "healthcare_regional",
+    "status": "enacted",
+    "affects": [
+      "hospital",
+      "practice"
+    ],
+    "summary_plain": "Under the ONC HTI 1 rule, certified electronic health record systems must expose source information about the decision support interventions built into them, including AI and algorithm based features, so users can see things like intended use, development data, and how the tool was validated. This is a requirement on your EHR vendor, not on you directly, but it gives compliance officers and practice managers a lever to demand transparency about any AI baked into the record system. A newer proposed rule called HTI 5 would remove the AI model card requirement from this rule, which would weaken what vendors have to disclose.",
+    "pov": "Use this requirement while it still has full teeth. Ask your EHR vendor now for the decision support intervention source attributes on every AI feature they ship, do not wait to see whether HTI 5 waters this down later in 2026.",
+    "source_name": "Office of the National Coordinator for Health Information Technology (ASTP/ONC)",
+    "source_url": "https://www.federalregister.gov/documents/2024/01/09/2023-28857/health-data-technology-and-interoperability-certification-program-updates-algorithm-transparency-and",
+    "tags": [
+      "onc",
+      "astp",
+      "ehr",
+      "hti-1",
+      "hti-5",
+      "algorithm-transparency",
+      "certified-health-it"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "nj-eo-346-ai-task-force",
+    "date_published": "2023-10-10",
+    "title": "New Jersey Governor Established Statewide AI Task Force Under Executive Order 346",
+    "jurisdiction": "nj_state",
+    "status": "enacted",
+    "affects": [
+      "municipality",
+      "county",
+      "school_district",
+      "authority"
+    ],
+    "summary_plain": "In October 2023 Governor Murphy created a statewide Artificial Intelligence Task Force to study AI risks and recommend how state government should use it. The task force delivered its final report in November 2024 with recommendations on privacy and security, workforce training, equity and AI literacy, and growing New Jersey as an AI hub. The task force has finished its work and there is no confirmed successor order yet from Governor Sherrill, so this report remains the closest thing New Jersey has to a statewide AI strategy.",
+    "pov": "This order set the tone for state government AI use but it created no binding rules for counties, municipalities, or school districts. Treat the report as a signal of where state grant money and procurement standards may head, not as a compliance requirement today.",
+    "source_name": "Office of the Governor of New Jersey",
+    "source_url": "https://nj.gov/governor_murphy/news/news/562023/approved/20231010b.shtml",
+    "tags": [
+      "executive-order",
+      "task-force",
+      "state-government",
+      "ai-strategy"
+    ],
+    "review_by": "2027-01-15"
+  },
+  {
+    "id": "nist-ai-rmf",
+    "date_published": "2023-01-26",
+    "title": "NIST AI Risk Management Framework Remains The National Standard",
+    "jurisdiction": "federal",
+    "status": "guidance",
+    "affects": [
+      "municipality",
+      "county",
+      "school_district",
+      "authority",
+      "hospital"
+    ],
+    "summary_plain": "The National Institute of Standards and Technology published a voluntary framework in January 2023 for identifying and managing the risks of artificial intelligence, and that version is still the one in effect today. NIST later added a companion Generative AI Profile in July 2024 with more specific guidance for tools like chatbots, and further sector specific profiles are in development through 2026. Nothing in this framework is legally required for New Jersey local governments or school districts, but it has become the default reference that grant makers, insurers, auditors, and IT vendors expect to see named in a public agency's AI policy.",
+    "pov": "If your agency writes an AI policy and does not cite the NIST framework by name, expect an auditor or a grant reviewer to ask why not. Adopt it as your baseline, add the Generative AI Profile for anything chatbot or copilot related, and do not let a vendor talk you into using their own proprietary risk framework instead.",
+    "source_name": "National Institute of Standards and Technology (NIST)",
+    "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+    "tags": [
+      "nist",
+      "risk-management",
+      "framework",
+      "ai-governance",
+      "standards"
+    ],
+    "review_by": "2027-01-15"
+  }
+]

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NJ AI Watch: AI Policy and Regulation Tracker for NJ Government and Healthcare | 916 Consulting</title>
+<meta name="description" content="A plain language tracker of AI executive orders, laws, and guidance for New Jersey municipalities, counties, and school districts, plus healthcare AI regulation across NJ, NY, CT, and PA. Updated monthly by 916 Consulting.">
+<link rel="canonical" href="https://www.916consulting.com/nj-ai-watch/">
+<meta property="og:title" content="NJ AI Watch: AI Policy Tracker for NJ Government and Healthcare">
+<meta property="og:description" content="What New Jersey administrators and regional healthcare leaders need to know about AI regulation, in plain language, updated monthly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.916consulting.com/nj-ai-watch/">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%230F3540"/><text x="32" y="44" font-family="Georgia,serif" font-size="30" text-anchor="middle" fill="%23FBFCFC">9<tspan fill="%234FAE9B">1</tspan>6</text></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #174A56; --teal: #4FAE9B; --depth: #0F3540;
+    --mist: #EEF3F2; --paper: #FBFCFC;
+    --text: #174A56; --text-dim: #56737c;
+    --line: #dde7e5; --line-strong: #c6d6d3; --card: #ffffff;
+    --shadow-card: 0 1px 2px rgba(15,53,64,0.04), 0 8px 24px rgba(15,53,64,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--paper); color: var(--text);
+    line-height: 1.68; font-size: 16px; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { font-family: "Marcellus", Georgia, serif; font-weight: 400; line-height: 1.16; }
+  .caps { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; }
+
+  .logo { display: inline-flex; align-items: baseline; gap: 12px; text-decoration: none; color: var(--navy); }
+  .logo .numerals { font-family: "Marcellus", Georgia, serif; font-size: 1.5rem; line-height: 1; }
+  .logo .one { color: var(--teal); }
+  .logo .caption { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,252,252,0.88); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  nav.links { display: flex; gap: 24px; align-items: center; }
+  nav.links a { color: var(--text-dim); text-decoration: none; font-size: 0.86rem; font-weight: 500; }
+  nav.links a:hover { color: var(--teal); }
+  .nav-cta { color: #fff !important; background: var(--navy); padding: 8px 16px; border-radius: 6px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--depth); }
+  @media (max-width: 640px) { nav.links a:not(.nav-cta) { display: none; } }
+
+  .page-head { background: linear-gradient(180deg, var(--mist), var(--paper)); border-bottom: 1px solid var(--line); padding: 60px 0 44px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--teal); margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--teal); }
+  .page-head h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--navy); max-width: 24ch; }
+  .page-head .meta { margin-top: 18px; color: var(--text-dim); font-size: 0.88rem; }
+  .disclaimer {
+    margin-top: 22px; padding: 14px 18px; max-width: 72ch;
+    background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--teal);
+    border-radius: 4px; font-size: 0.85rem; color: var(--text-dim);
+  }
+
+  .filters { padding: 26px 0 6px; }
+  .filter-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .filter-row .caps { color: var(--text-dim); margin-right: 6px; }
+  button.filter {
+    font-family: inherit; font-size: 0.8rem; font-weight: 500;
+    color: var(--text-dim); background: #fff;
+    border: 1px solid var(--line-strong); border-radius: 999px;
+    padding: 6px 14px; cursor: pointer;
+  }
+  button.filter:hover { border-color: var(--teal); color: var(--teal); }
+  button.filter.on { color: var(--navy); border-color: var(--teal); box-shadow: inset 0 0 0 1px var(--teal); }
+  button.filter:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  .filter-count { font-size: 0.8rem; color: var(--text-dim); padding: 4px 0 0; }
+
+  .entries { padding: 18px 0 60px; display: grid; gap: 20px; }
+  .entry {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+    padding: 26px 28px; box-shadow: var(--shadow-card);
+  }
+  .entry.hidden { display: none; }
+  .entry-meta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 10px; }
+  .entry-meta .date { color: var(--navy); }
+  .entry-meta .juris { color: var(--text-dim); }
+  .status {
+    font-size: 0.64rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--teal); border: 1px solid var(--line-strong);
+    border-radius: 999px; padding: 4px 12px; background: var(--paper);
+  }
+  .entry h2 { font-size: 1.3rem; color: var(--navy); margin-bottom: 14px; }
+  .entry h2 a { text-decoration: none; }
+  .entry h2 a:hover { color: var(--teal); }
+  .entry .label { color: var(--teal); margin-bottom: 4px; font-size: 0.62rem; }
+  .entry .summary { color: var(--text); font-size: 0.95rem; margin-bottom: 16px; max-width: 72ch; }
+  .take {
+    border-left: 2px solid var(--teal); background: var(--mist);
+    border-radius: 0 4px 4px 0; padding: 12px 18px; margin-bottom: 16px; max-width: 72ch;
+  }
+  .take p:last-child { color: var(--text-dim); font-size: 0.92rem; }
+  .entry-foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 14px; }
+  .source { font-size: 0.84rem; font-weight: 600; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+  .source:hover { color: var(--teal); border-color: var(--teal); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 0.66rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); background: var(--mist); border-radius: 999px; padding: 3px 10px; }
+
+  .subscribe { background: var(--depth); color: var(--mist); padding: 64px 0; text-align: center; }
+  .subscribe h2 { font-size: clamp(1.5rem, 3vw, 2rem); color: #fff; margin-bottom: 10px; }
+  .subscribe p { color: #a9c0bd; font-size: 0.94rem; max-width: 50ch; margin: 0 auto 26px; }
+  .subscribe form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .subscribe input[type="email"] {
+    font-family: inherit; font-size: 0.92rem; padding: 13px 16px; min-width: 280px;
+    border: 1px solid rgba(79,174,155,0.4); border-radius: 6px;
+    background: rgba(238,243,242,0.06); color: #fff;
+  }
+  .subscribe input[type="email"]::placeholder { color: #7fa8a0; }
+  .subscribe button {
+    font-family: inherit; font-size: 0.92rem; font-weight: 600;
+    background: var(--teal); color: var(--depth); border: 0; border-radius: 6px;
+    padding: 13px 24px; cursor: pointer;
+  }
+  .subscribe button:hover { filter: brightness(1.08); }
+  .subscribe .fine { font-size: 0.76rem; color: #7fa8a0; margin-top: 14px; }
+
+  .crosslink { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  .crosslink .box { background: var(--card); border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow-card); padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; }
+  .crosslink h2 { font-size: 1.25rem; color: var(--navy); }
+  .crosslink p { color: var(--text-dim); font-size: 0.9rem; max-width: 52ch; }
+  .btn-navy { display: inline-block; text-decoration: none; background: var(--navy); color: #fff; padding: 12px 22px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+  .btn-navy:hover { background: var(--depth); }
+
+  footer { padding: 28px 0; font-size: 0.78rem; color: var(--text-dim); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+  footer .fine { max-width: 60ch; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="../index.html" aria-label="916 Consulting home">
+      <span class="numerals">9<span class="one">1</span>6</span>
+      <span class="caption">Consulting</span>
+    </a>
+    <nav class="links">
+      <a href="../index.html#ai">AI Oversight</a>
+      <a href="../index.html#services">Services</a>
+      <a href="#subscribe">Subscribe</a>
+      <a class="nav-cta" href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <span class="eyebrow caps">NJ AI Watch</span>
+    <h1>AI policy and regulation, tracked for New Jersey government and regional healthcare.</h1>
+    <p class="meta">Updated monthly at minimum · Last updated July 15, 2026 · 11 entries</p>
+    <div class="disclaimer">
+      General information, not legal advice. Every entry links to its primary source.
+      Confirm current requirements with your own counsel before acting.
+    </div>
+  </div>
+</div>
+
+<div class="wrap filters">
+  <div class="filter-row">
+    <span class="caps">Jurisdiction</span>
+    <button class="filter" data-group="jurisdiction" data-value="nj_state">NJ State</button><button class="filter" data-group="jurisdiction" data-value="nj_legislative">NJ Legislative</button><button class="filter" data-group="jurisdiction" data-value="federal">Federal</button><button class="filter" data-group="jurisdiction" data-value="healthcare_regional">Healthcare Regional</button>
+  </div>
+  <div class="filter-row">
+    <span class="caps">Who it affects</span>
+    <button class="filter" data-group="affects" data-value="municipality">Municipality</button><button class="filter" data-group="affects" data-value="county">County</button><button class="filter" data-group="affects" data-value="school_district">School District</button><button class="filter" data-group="affects" data-value="authority">Authority</button><button class="filter" data-group="affects" data-value="hospital">Hospital</button><button class="filter" data-group="affects" data-value="practice">Practice</button>
+  </div>
+  <p class="filter-count" id="filter-count"></p>
+</div>
+
+<main class="wrap entries">
+
+<article class="entry" id="ct-cart-act-healthcare-ai-carveout" data-jurisdiction="healthcare_regional" data-affects="hospital practice">
+  <div class="entry-meta">
+    <span class="caps date">June 2, 2026</span>
+    <span class="caps juris">Healthcare Regional</span>
+    <span class="status status-enacted">Enacted</span>
+  </div>
+  <h2><a href="#ct-cart-act-healthcare-ai-carveout">Connecticut AI Law Carves Out Clinical Support Tools but Not Humanlike Patient Chatbots</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">Connecticut signed a broad AI law in June 2026, the CART Act, that regulates consumer facing chatbots, employment AI, and synthetic content, with most obligations starting October 1 2026. The law exempts AI tools used only for health education, clinical support, medication reminders, or disease management from its consumer chatbot rules, but only if the tool does not present itself as a person, does not use humanlike features, and is not designed to meet social or emotional needs. Hospitals and practices serving Connecticut patients with any patient facing AI assistant need to check whether that tool actually qualifies for the exemption.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>If your patient chatbot has a name, a friendly persona, or empathetic sounding language, do not assume the healthcare carveout covers you. Get counsel to check your specific tool against the exemption language before October 2026 rather than after a complaint.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf" rel="noopener">Source: Connecticut General Assembly</a>
+    <span class="tags"><span class="tag">Hospital</span><span class="tag">Practice</span></span>
+  </div>
+</article>
+
+<article class="entry" id="ed-dear-colleague-ai-schools" data-jurisdiction="federal" data-affects="school_district">
+  <div class="entry-meta">
+    <span class="caps date">July 22, 2025</span>
+    <span class="caps juris">Federal</span>
+    <span class="status status-guidance">Guidance</span>
+  </div>
+  <h2><a href="#ed-dear-colleague-ai-schools">Education Department Tells Schools How Federal Funds Can Pay For AI</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">In July 2025 the U.S. Department of Education sent school districts and states a Dear Colleague Letter explaining that existing federal education grant funds may be used to buy or build AI tools for instruction, personalized learning, and teacher training, as long as the use follows the normal rules for that grant program. It does not create a new AI specific mandate or a new pot of money, and it does not require any district to adopt AI. It is guidance interpreting existing law, not a new regulation, so a district&#x27;s own school board policy and state rules still govern whether and how to use it.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>Treat this as permission, not a push. It tells your business office that federal grant dollars will not automatically be flagged for buying an AI tool, but every dollar still has to trace back to that grant&#x27;s original allowable use rules, so get your grant compliance and curriculum staff in the same room before any purchase, not after.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.ed.gov/media/document/opepd-ai-dear-colleague-letter-7222025-110427.pdf" rel="noopener">Source: U.S. Department of Education</a>
+    <span class="tags"><span class="tag">School District</span></span>
+  </div>
+</article>
+
+<article class="entry" id="omb-m-25-22-ai-acquisition" data-jurisdiction="federal" data-affects="municipality county school_district authority">
+  <div class="entry-meta">
+    <span class="caps date">April 3, 2025</span>
+    <span class="caps juris">Federal</span>
+    <span class="status status-enacted">Enacted</span>
+  </div>
+  <h2><a href="#omb-m-25-22-ai-acquisition">OMB Tells Federal Agencies How To Buy AI Systems Responsibly</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">In April 2025 the White House Office of Management and Budget told federal agencies how they must buy and manage artificial intelligence systems, including rules on vendor lock in, data ownership, and testing before high risk uses. This memo binds only federal agencies, not New Jersey counties, municipalities, or school districts. But the vendors selling AI tools to Trenton and to your town are shaping their national contract templates around these same federal terms, so expect similar language such as data ownership, training restrictions, and performance monitoring to show up in your own procurement documents too.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>This is free vendor leverage. Ask any AI company pitching your agency whether it will accept the same data ownership and training restrictions the federal government now requires of its own AI vendors, and treat a refusal as a red flag.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf" rel="noopener">Source: Office of Management and Budget (OMB)</a>
+    <span class="tags"><span class="tag">Municipality</span><span class="tag">County</span><span class="tag">School District</span><span class="tag">Authority</span></span>
+  </div>
+</article>
+
+<article class="entry" id="nj-deepfake-law-a3540" data-jurisdiction="nj_legislative" data-affects="municipality county school_district authority">
+  <div class="entry-meta">
+    <span class="caps date">April 2, 2025</span>
+    <span class="caps juris">NJ Legislative</span>
+    <span class="status status-enacted">Enacted</span>
+  </div>
+  <h2><a href="#nj-deepfake-law-a3540">New Jersey Criminalizes Malicious AI Deepfakes</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">New Jersey law now makes it a crime to create or share a fake AI generated photo, video, or audio recording of a real person for an unlawful purpose such as harassment, extortion, or influencing an election. It also lets the person targeted sue the creator for damages. Penalties can include up to five years in prison and fines up to $30,000. This matters for any local government office that handles elections, public complaints, or student discipline involving fake images or recordings.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>This is a real criminal law with teeth, not a guidance document, so make sure your election officials and school administrators know it exists. Do not assume your IT vendor or communications staff already understands the difference between a prank and a felony.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.nj.gov/governor_murphy/news/news/562025/approved/20250402a.shtml" rel="noopener">Source: Office of the Governor of New Jersey</a>
+    <span class="tags"><span class="tag">Municipality</span><span class="tag">County</span><span class="tag">School District</span><span class="tag">Authority</span></span>
+  </div>
+</article>
+
+<article class="entry" id="nj-dcr-algorithmic-discrimination-guidance" data-jurisdiction="nj_state" data-affects="municipality county school_district authority hospital practice">
+  <div class="entry-meta">
+    <span class="caps date">January 9, 2025</span>
+    <span class="caps juris">NJ State</span>
+    <span class="status status-guidance">Guidance</span>
+  </div>
+  <h2><a href="#nj-dcr-algorithmic-discrimination-guidance">New Jersey Attorney General Issues Guidance on AI Hiring Discrimination</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">The New Jersey Division on Civil Rights says the state Law Against Discrimination applies fully to decisions made with AI tools, including software used to screen job applicants or evaluate employees. An employer can be held liable for discrimination caused by an AI tool even if the employer did not build the tool and did not know it was biased. The guidance recommends testing tools before and after use, telling applicants when AI is involved, and keeping a human able to review AI driven decisions.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>If your HR department or a vendor uses AI to screen resumes or rank candidates, this guidance puts the legal risk on you, not the software company. Ask any HR tech vendor for their bias audit results in writing before you sign, not after a complaint arrives.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.njoag.gov/attorney-general-platkin-and-division-on-civil-rights-announce-new-guidance-on-algorithmic-discrimination-creation-of-civil-rights-innovation-lab/" rel="noopener">Source: New Jersey Office of the Attorney General, Division on Civil Rights</a>
+    <span class="tags"><span class="tag">Municipality</span><span class="tag">County</span><span class="tag">School District</span><span class="tag">Authority</span><span class="tag">Hospital</span><span class="tag">Practice</span></span>
+  </div>
+</article>
+
+<article class="entry" id="fda-ai-enabled-device-software-draft-guidance" data-jurisdiction="healthcare_regional" data-affects="hospital practice">
+  <div class="entry-meta">
+    <span class="caps date">January 6, 2025</span>
+    <span class="caps juris">Healthcare Regional</span>
+    <span class="status status-proposed">Proposed</span>
+  </div>
+  <h2><a href="#fda-ai-enabled-device-software-draft-guidance">FDA Draft Guidance Sets Expectations for AI Enabled Medical Devices and Clinical Software</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">FDA published draft guidance in January 2025 spelling out what it wants to see in marketing submissions for AI enabled medical devices and software, including how a manufacturer plans to monitor and update the model after it ships. It is not finalized and not legally binding, but it tells hospitals and practices what documentation to demand from any vendor selling AI enabled diagnostic, monitoring, or clinical decision support software regulated as a device.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>Do not wait for this to become final before using it as a procurement checklist. If a vendor cannot explain their training data, validation results, and plan for monitoring model drift in the terms this guidance describes, that is a real gap regardless of whether the guidance itself is technically still a draft.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/artificial-intelligence-enabled-device-software-functions-lifecycle-management-and-marketing" rel="noopener">Source: U.S. Food and Drug Administration</a>
+    <span class="tags"><span class="tag">Hospital</span><span class="tag">Practice</span></span>
+  </div>
+</article>
+
+<article class="entry" id="nj-doe-ai-resources-schools" data-jurisdiction="nj_state" data-affects="school_district">
+  <div class="entry-meta">
+    <span class="caps date">June 1, 2024</span>
+    <span class="caps juris">NJ State</span>
+    <span class="status status-guidance">Guidance</span>
+  </div>
+  <h2><a href="#nj-doe-ai-resources-schools">New Jersey Department of Education Publishes AI Resources for School Districts</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">The NJ Department of Education Office of Innovation published an overview of AI concepts, discussion questions for district leaders, and curated resources to help schools use AI for teaching and administration. The material is informational only and does not set a mandatory policy or require districts to adopt any specific rule. Districts are expected to write their own local AI policy, and NJDOE points toward outside model policies such as the one from the New Jersey School Boards Association as a starting point.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>There is no state mandate here, which means your district is exposed if you have not adopted a written AI policy and something goes wrong with a student or a teacher using it. Do not wait for Trenton to make this decision for you, adopt a local policy now using the NJSBA model as a starting point.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.nj.gov/education/innovation/ai/" rel="noopener">Source: New Jersey Department of Education, Office of Innovation</a>
+    <span class="tags"><span class="tag">School District</span></span>
+  </div>
+</article>
+
+<article class="entry" id="hhs-1557-ai-decision-support-tools" data-jurisdiction="healthcare_regional" data-affects="hospital practice">
+  <div class="entry-meta">
+    <span class="caps date">May 6, 2024</span>
+    <span class="caps juris">Healthcare Regional</span>
+    <span class="status status-enacted">Enacted</span>
+  </div>
+  <h2><a href="#hhs-1557-ai-decision-support-tools">HHS Section 1557 Rule Requires Hospitals and Practices to Vet AI Decision Support Tools for Bias</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">Any hospital, health system, or practice that receives federal funding through Medicare or Medicaid must identify patient care decision support tools, including AI and algorithmic tools, that use race, sex, age, disability, or other protected characteristics as inputs. Once identified, the organization has an ongoing duty to take reasonable steps to reduce the risk of discrimination from those tools. This covers everything from risk scores built into your EHR to third party AI used for triage or prior authorization support.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>This is live federal law right now, not a proposal, even though the same rule&#x27;s gender identity provisions are tangled up in court and HHS has gone quiet publicly. Do not let the political noise around one piece of the rule convince you the AI nondiscrimination piece went away too, get your vendor list and ask each vendor in writing whether protected characteristics feed their models.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.federalregister.gov/documents/2024/05/06/2024-08711/nondiscrimination-in-health-programs-and-activities" rel="noopener">Source: U.S. Department of Health and Human Services, Office for Civil Rights</a>
+    <span class="tags"><span class="tag">Hospital</span><span class="tag">Practice</span></span>
+  </div>
+</article>
+
+<article class="entry" id="onc-hti1-dsi-transparency-hti5-rollback-proposed" data-jurisdiction="healthcare_regional" data-affects="hospital practice">
+  <div class="entry-meta">
+    <span class="caps date">January 9, 2024</span>
+    <span class="caps juris">Healthcare Regional</span>
+    <span class="status status-enacted">Enacted</span>
+  </div>
+  <h2><a href="#onc-hti1-dsi-transparency-hti5-rollback-proposed">Certified EHR Transparency Rules for AI Features Are in Effect but Face a Proposed Rollback</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">Under the ONC HTI 1 rule, certified electronic health record systems must expose source information about the decision support interventions built into them, including AI and algorithm based features, so users can see things like intended use, development data, and how the tool was validated. This is a requirement on your EHR vendor, not on you directly, but it gives compliance officers and practice managers a lever to demand transparency about any AI baked into the record system. A newer proposed rule called HTI 5 would remove the AI model card requirement from this rule, which would weaken what vendors have to disclose.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>Use this requirement while it still has full teeth. Ask your EHR vendor now for the decision support intervention source attributes on every AI feature they ship, do not wait to see whether HTI 5 waters this down later in 2026.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.federalregister.gov/documents/2024/01/09/2023-28857/health-data-technology-and-interoperability-certification-program-updates-algorithm-transparency-and" rel="noopener">Source: Office of the National Coordinator for Health Information Technology (ASTP/ONC)</a>
+    <span class="tags"><span class="tag">Hospital</span><span class="tag">Practice</span></span>
+  </div>
+</article>
+
+<article class="entry" id="nj-eo-346-ai-task-force" data-jurisdiction="nj_state" data-affects="municipality county school_district authority">
+  <div class="entry-meta">
+    <span class="caps date">October 10, 2023</span>
+    <span class="caps juris">NJ State</span>
+    <span class="status status-enacted">Enacted</span>
+  </div>
+  <h2><a href="#nj-eo-346-ai-task-force">New Jersey Governor Established Statewide AI Task Force Under Executive Order 346</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">In October 2023 Governor Murphy created a statewide Artificial Intelligence Task Force to study AI risks and recommend how state government should use it. The task force delivered its final report in November 2024 with recommendations on privacy and security, workforce training, equity and AI literacy, and growing New Jersey as an AI hub. The task force has finished its work and there is no confirmed successor order yet from Governor Sherrill, so this report remains the closest thing New Jersey has to a statewide AI strategy.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>This order set the tone for state government AI use but it created no binding rules for counties, municipalities, or school districts. Treat the report as a signal of where state grant money and procurement standards may head, not as a compliance requirement today.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://nj.gov/governor_murphy/news/news/562023/approved/20231010b.shtml" rel="noopener">Source: Office of the Governor of New Jersey</a>
+    <span class="tags"><span class="tag">Municipality</span><span class="tag">County</span><span class="tag">School District</span><span class="tag">Authority</span></span>
+  </div>
+</article>
+
+<article class="entry" id="nist-ai-rmf" data-jurisdiction="federal" data-affects="municipality county school_district authority hospital">
+  <div class="entry-meta">
+    <span class="caps date">January 26, 2023</span>
+    <span class="caps juris">Federal</span>
+    <span class="status status-guidance">Guidance</span>
+  </div>
+  <h2><a href="#nist-ai-rmf">NIST AI Risk Management Framework Remains The National Standard</a></h2>
+  <p class="label caps">What this means for you</p>
+  <p class="summary">The National Institute of Standards and Technology published a voluntary framework in January 2023 for identifying and managing the risks of artificial intelligence, and that version is still the one in effect today. NIST later added a companion Generative AI Profile in July 2024 with more specific guidance for tools like chatbots, and further sector specific profiles are in development through 2026. Nothing in this framework is legally required for New Jersey local governments or school districts, but it has become the default reference that grant makers, insurers, auditors, and IT vendors expect to see named in a public agency&#x27;s AI policy.</p>
+  <div class="take">
+    <p class="label caps">The 916 take</p>
+    <p>If your agency writes an AI policy and does not cite the NIST framework by name, expect an auditor or a grant reviewer to ask why not. Adopt it as your baseline, add the Generative AI Profile for anything chatbot or copilot related, and do not let a vendor talk you into using their own proprietary risk framework instead.</p>
+  </div>
+  <div class="entry-foot">
+    <a class="source" href="https://www.nist.gov/itl/ai-risk-management-framework" rel="noopener">Source: National Institute of Standards and Technology (NIST)</a>
+    <span class="tags"><span class="tag">Municipality</span><span class="tag">County</span><span class="tag">School District</span><span class="tag">Authority</span><span class="tag">Hospital</span></span>
+  </div>
+</article>
+</main>
+
+<section class="crosslink">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>Need help applying any of this?</h2>
+        <p>916 Consulting builds AI policies, evaluates vendors, and runs standing AI
+        oversight for New Jersey agencies and regional healthcare organizations.</p>
+      </div>
+      <a class="btn-navy" href="../index.html#contact">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+<section class="subscribe" id="subscribe">
+  <div class="wrap">
+    <h2>Get the monthly NJ AI Watch briefing.</h2>
+    <p>One email a month with what changed and what it means for your organization.
+    No spam, unsubscribe anytime.</p>
+    <form action="https://buttondown.com/api/emails/embed-subscribe/916consulting" method="post">
+      <input type="email" name="email" placeholder="you@youragency.gov" required aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="fine">Published by 916 Consulting, LLC. Your address is used only for this briefing.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="../index.html" aria-label="916 Consulting home">
+      <span class="numerals">9<span class="one">1</span>6</span>
+      <span class="caption">Consulting</span>
+    </a>
+    <span class="fine">Not legal advice. Confirm current requirements with your own counsel.
+    © 2026 916 Consulting, LLC · New Jersey</span>
+  </div>
+</footer>
+
+<script>
+  const state = { jurisdiction: new Set(), affects: new Set() };
+  const entries = Array.from(document.querySelectorAll('.entry'));
+  const countEl = document.getElementById('filter-count');
+
+  function apply() {
+    let shown = 0;
+    for (const el of entries) {
+      const j = el.dataset.jurisdiction;
+      const a = el.dataset.affects.split(' ');
+      const okJ = state.jurisdiction.size === 0 || state.jurisdiction.has(j);
+      const okA = state.affects.size === 0 || a.some(x => state.affects.has(x));
+      el.classList.toggle('hidden', !(okJ && okA));
+      if (okJ && okA) shown++;
+    }
+    countEl.textContent = (state.jurisdiction.size || state.affects.size)
+      ? 'Showing ' + shown + ' of ' + entries.length + ' entries'
+      : '';
+  }
+
+  document.querySelectorAll('button.filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const set = state[btn.dataset.group];
+      const v = btn.dataset.value;
+      if (set.has(v)) { set.delete(v); btn.classList.remove('on'); }
+      else { set.add(v); btn.classList.add('on'); }
+      apply();
+    });
+  });
+</script>
+
+</body>
+</html>

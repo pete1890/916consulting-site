@@ -1,0 +1,8 @@
+# Internal business documents, never published
+specs/
+brand/
+nj-ai-watch/drafts/
+nj-ai-watch/SEED-REVIEW.md
+
+# macOS noise
+.DS_Store
