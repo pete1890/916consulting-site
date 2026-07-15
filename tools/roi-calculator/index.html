@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automation ROI Calculator for Government and Healthcare | 916 Consulting</title>
+<meta name="description" content="Enter your own volumes for permit processing, records requests, license renewals, inspection scheduling, patient intake, prior authorizations, appointment reminders, or referral processing, and get an honest annual hours and dollars range, software cost and oversight cost included.">
+<link rel="canonical" href="https://www.916consulting.com/tools/roi-calculator/">
+<meta property="og:title" content="Automation ROI Calculator for Government and Healthcare">
+<meta property="og:description" content="An honest annual savings range for your workflow, with software cost, oversight cost, and setup time shown, not hidden.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.916consulting.com/tools/roi-calculator/">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%230F3540"/><text x="32" y="44" font-family="Georgia,serif" font-size="30" text-anchor="middle" fill="%23FBFCFC">9<tspan fill="%234FAE9B">1</tspan>6</text></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #174A56; --teal: #4FAE9B; --depth: #0F3540;
+    --mist: #EEF3F2; --paper: #FBFCFC;
+    --text: #174A56; --text-dim: #56737c;
+    --line: #dde7e5; --line-strong: #c6d6d3; --card: #ffffff;
+    --shadow-card: 0 1px 2px rgba(15,53,64,0.04), 0 8px 24px rgba(15,53,64,0.06);
+    --good: #2f8f6f; --bad: #a24b3f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--paper); color: var(--text);
+    line-height: 1.68; font-size: 16px; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Marcellus", Georgia, serif; font-weight: 400; line-height: 1.16; }
+  .caps { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; }
+  .num { font-variant-numeric: tabular-nums; }
+  button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--teal); outline-offset: 2px;
+  }
+
+  .logo { display: inline-flex; align-items: baseline; gap: 12px; text-decoration: none; color: var(--navy); }
+  .logo .numerals { font-family: "Marcellus", Georgia, serif; font-size: 1.5rem; line-height: 1; }
+  .logo .one { color: var(--teal); }
+  .logo .caption { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,252,252,0.88); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  nav.links { display: flex; gap: 24px; align-items: center; }
+  nav.links a { color: var(--text-dim); text-decoration: none; font-size: 0.86rem; font-weight: 500; }
+  nav.links a:hover { color: var(--teal); }
+  .nav-cta { color: #fff !important; background: var(--navy); padding: 8px 16px; border-radius: 6px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--depth); }
+  @media (max-width: 640px) { nav.links a:not(.nav-cta) { display: none; } }
+
+  .page-head { background: linear-gradient(180deg, var(--mist), var(--paper)); border-bottom: 1px solid var(--line); padding: 60px 0 44px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--teal); margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--teal); }
+  .page-head h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--navy); max-width: 26ch; }
+  .page-head .lede { margin-top: 18px; color: var(--text-dim); font-size: 1rem; max-width: 62ch; }
+
+  section { padding: 44px 0; border-bottom: 1px solid var(--line); }
+  section.tight { padding: 32px 0; }
+  section h2 { font-size: 1.5rem; color: var(--navy); margin-bottom: 8px; }
+  section > .wrap > .section-lede { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 22px; max-width: 62ch; }
+
+  .group-label { margin: 22px 0 12px; color: var(--navy); }
+  .group-label:first-child { margin-top: 0; }
+  .template-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  button.template-card {
+    font-family: inherit; text-align: left; cursor: pointer;
+    background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+    padding: 16px 18px; box-shadow: var(--shadow-card);
+  }
+  button.template-card:hover { border-color: var(--teal); }
+  button.template-card.active { border-color: var(--teal); box-shadow: inset 0 0 0 1px var(--teal), var(--shadow-card); background: var(--mist); }
+  button.template-card .t-name { font-weight: 600; color: var(--navy); font-size: 0.98rem; margin-bottom: 4px; }
+  button.template-card .t-sub { color: var(--text-dim); font-size: 0.8rem; }
+  .active-flag { display: none; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-top: 8px; }
+  button.template-card.active .active-flag { display: block; }
+
+  .assumption-note {
+    margin-top: 18px; padding: 12px 16px; max-width: 72ch;
+    background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--teal);
+    border-radius: 4px; font-size: 0.82rem; color: var(--text-dim);
+  }
+
+  .field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 8px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+  .field .hint { font-size: 0.74rem; color: var(--text-dim); }
+  .field input {
+    font-family: inherit; font-size: 1rem; padding: 10px 12px;
+    border: 1px solid var(--line-strong); border-radius: 6px; background: #fff; color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .field input:focus { border-color: var(--teal); }
+
+  .advanced-toggle {
+    font-family: inherit; margin-top: 24px; cursor: pointer;
+    background: none; border: 1px solid var(--line-strong); border-radius: 6px;
+    padding: 10px 16px; font-size: 0.86rem; font-weight: 600; color: var(--navy);
+  }
+  .advanced-toggle:hover { border-color: var(--teal); color: var(--teal); }
+  .advanced-panel { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--line-strong); }
+  .advanced-panel.open { display: block; }
+  .field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .results-band { background: var(--mist); }
+  .honesty-line { display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--teal); border-radius: 4px; margin-bottom: 26px; }
+  .honesty-line p { font-size: 0.9rem; color: var(--text-dim); }
+  .honesty-line p strong { color: var(--navy); }
+
+  .headline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .headline-card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 22px 24px; box-shadow: var(--shadow-card); }
+  .headline-card .label { color: var(--text-dim); margin-bottom: 8px; }
+  .headline-card .range { font-family: "Marcellus", Georgia, serif; font-size: 1.7rem; color: var(--navy); line-height: 1.2; }
+  .headline-card .range .to { font-size: 1rem; color: var(--text-dim); margin: 0 6px; font-family: "Space Grotesk", sans-serif; }
+  .range-bar { margin-top: 12px; height: 6px; border-radius: 999px; background: var(--line); position: relative; overflow: hidden; }
+  .range-bar .fill { position: absolute; top: 0; bottom: 0; left: 8%; right: 8%; background: var(--teal); border-radius: 999px; }
+
+  .cost-list { list-style: none; display: grid; gap: 10px; margin-bottom: 24px; }
+  .cost-list li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 6px; font-size: 0.9rem; }
+  .cost-list li .c-label { color: var(--text); font-weight: 500; }
+  .cost-list li .c-sub { color: var(--text-dim); font-size: 0.78rem; display: block; margin-top: 2px; }
+  .cost-list li .c-val { color: var(--navy); font-weight: 600; text-align: right; white-space: nowrap; }
+
+  .net-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .net-card { background: var(--navy); color: #fff; border-radius: 6px; padding: 22px 24px; }
+  .net-card .label { color: #a9c0bd; margin-bottom: 8px; }
+  .net-card .range { font-family: "Marcellus", Georgia, serif; font-size: 1.5rem; }
+  .net-card .range .to { font-size: 0.95rem; color: #a9c0bd; margin: 0 6px; font-family: "Space Grotesk", sans-serif; }
+  .net-card .foot { margin-top: 8px; font-size: 0.76rem; color: #a9c0bd; }
+
+  .caveat-block {
+    padding: 16px 18px; background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--teal);
+    border-radius: 4px; font-size: 0.86rem; color: var(--text-dim); margin-bottom: 24px;
+  }
+  .caveat-block p + p { margin-top: 8px; }
+
+  details.math-panel { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 18px 22px; margin-bottom: 24px; }
+  details.math-panel summary { cursor: pointer; font-weight: 600; color: var(--navy); font-size: 0.92rem; }
+  details.math-panel .math-body { margin-top: 14px; font-size: 0.84rem; color: var(--text-dim); }
+  details.math-panel .math-body dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin-top: 10px; }
+  details.math-panel .math-body dt { color: var(--navy); font-weight: 500; }
+  details.math-panel .math-body ol { margin: 10px 0 0 18px; }
+  details.math-panel .math-body li { margin-bottom: 4px; }
+
+  .inputs-recap { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 24px; }
+  .inputs-recap .caps { color: var(--navy); }
+  .inputs-recap ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px 18px; margin-top: 8px; }
+
+  .action-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 8px; }
+  .btn-navy { display: inline-block; text-decoration: none; background: var(--navy); color: #fff; padding: 12px 22px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; border: 0; cursor: pointer; font-family: inherit; }
+  .btn-navy:hover { background: var(--depth); }
+  .btn-outline { display: inline-block; text-decoration: none; background: #fff; color: var(--navy); padding: 12px 22px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; border: 1px solid var(--line-strong); cursor: pointer; font-family: inherit; }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  .subscribe { background: var(--depth); color: var(--mist); padding: 64px 0; text-align: center; border-bottom: 1px solid var(--line); }
+  .subscribe h2 { font-size: clamp(1.5rem, 3vw, 2rem); color: #fff; margin-bottom: 10px; }
+  .subscribe p { color: #a9c0bd; font-size: 0.94rem; max-width: 50ch; margin: 0 auto 26px; }
+  .subscribe form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .subscribe input[type="email"] {
+    font-family: inherit; font-size: 0.92rem; padding: 13px 16px; min-width: 280px;
+    border: 1px solid rgba(79,174,155,0.4); border-radius: 6px;
+    background: rgba(238,243,242,0.06); color: #fff;
+  }
+  .subscribe input[type="email"]::placeholder { color: #7fa8a0; }
+  .subscribe button {
+    font-family: inherit; font-size: 0.92rem; font-weight: 600;
+    background: var(--teal); color: var(--depth); border: 0; border-radius: 6px;
+    padding: 13px 24px; cursor: pointer;
+  }
+  .subscribe button:hover { filter: brightness(1.08); }
+  .subscribe .fine { font-size: 0.76rem; color: #7fa8a0; margin-top: 14px; }
+
+  .crosslink { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  .crosslink .box { background: var(--card); border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow-card); padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; }
+  .crosslink h2 { font-size: 1.25rem; color: var(--navy); }
+  .crosslink p { color: var(--text-dim); font-size: 0.9rem; max-width: 52ch; }
+
+  footer { padding: 28px 0; font-size: 0.78rem; color: var(--text-dim); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+  footer .fine { max-width: 60ch; }
+
+  noscript.fallback { display: block; padding: 18px 24px; background: var(--mist); color: var(--navy); font-size: 0.9rem; border-bottom: 1px solid var(--line); }
+  noscript.fallback .wrap { max-width: 880px; margin: 0 auto; }
+
+  @media print {
+    .no-print { display: none !important; }
+    body { background: #fff; }
+    section { border-bottom: 0; padding: 10px 0; }
+    .net-card { background: #fff !important; color: var(--navy) !important; border: 1px solid var(--line-strong); }
+    .net-card .label, .net-card .foot { color: var(--text-dim) !important; }
+    .headline-card, .cost-list li, .caveat-block, details.math-panel { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<noscript class="fallback">
+  <div class="wrap">This calculator needs JavaScript to run the math. Please enable it, or
+  <a href="../../index.html#contact">start a conversation with 916 Consulting</a> about your workflow directly.</div>
+</noscript>
+
+<header class="site no-print">
+  <div class="wrap nav">
+    <a class="logo" href="../../index.html" aria-label="916 Consulting home">
+      <span class="numerals">9<span class="one">1</span>6</span>
+      <span class="caption">Consulting</span>
+    </a>
+    <nav class="links">
+      <a href="../../index.html#ai">AI Oversight</a>
+      <a href="../../index.html#services">Services</a>
+      <a href="../../nj-ai-watch/">NJ AI Watch</a>
+      <a class="nav-cta" href="../../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <span class="eyebrow caps">Free Tool</span>
+    <h1>See what automating one workflow is actually worth, costs included.</h1>
+    <p class="lede">Pick a workflow, enter your own volumes, and get an honest annual estimate.
+    Most vendors show you the top number. This tool also shows the software cost, the oversight
+    cost, and the setup time, right next to it.</p>
+  </div>
+</div>
+
+<section class="tight" id="templates">
+  <div class="wrap">
+    <h2>1. Pick a workflow</h2>
+    <p class="section-lede">Choosing a card fills in the inputs below with typical starting numbers for that
+    workflow. Every number is yours to change.</p>
+
+    <p class="caps group-label">Government</p>
+    <div class="template-grid" id="grid-gov"></div>
+
+    <p class="caps group-label">Healthcare</p>
+    <div class="template-grid" id="grid-health"></div>
+
+    <div class="assumption-note">
+      The starting numbers on every card are an industry rule of thumb, built from BPM and RPA case
+      studies and, for prior authorization, MGMA and AMA survey data. They are not a guarantee and
+      not specific to your organization. Pete validates each one against real client data before it
+      goes into a proposal. Change any field below to match your own operation.
+    </div>
+  </div>
+</section>
+
+<section id="inputs">
+  <div class="wrap">
+    <h2>2. Your numbers</h2>
+    <p class="section-lede">These four drive the estimate. The calculator recalculates as you type.</p>
+
+    <div class="field-grid">
+      <div class="field">
+        <label for="v">Items per month</label>
+        <input type="number" id="v" min="0" max="1000000" step="1" value="150" inputmode="numeric">
+        <span class="hint">Volume handled today, per month</span>
+      </div>
+      <div class="field">
+        <label for="tm">Minutes per item today</label>
+        <input type="number" id="tm" min="0" max="600" step="1" value="45" inputmode="numeric">
+        <span class="hint">Staff time to fully handle one item now</span>
+      </div>
+      <div class="field">
+        <label for="c">Loaded hourly cost</label>
+        <input type="number" id="c" min="0" max="500" step="1" value="45" inputmode="numeric">
+        <span class="hint">Fully loaded dollars per hour, wages plus benefits and overhead</span>
+      </div>
+      <div class="field">
+        <label for="em">Error or rework rate</label>
+        <input type="number" id="em" min="0" max="100" step="0.5" value="12" inputmode="numeric">
+        <span class="hint">Percent of items that need rework today</span>
+      </div>
+    </div>
+
+    <button type="button" class="advanced-toggle" id="advToggle" aria-expanded="false" aria-controls="advPanel">
+      Show the assumptions I can adjust
+    </button>
+
+    <div class="advanced-panel" id="advPanel">
+      <div class="field-grid">
+        <div class="field">
+          <label for="tr">Rework minutes per error item</label>
+          <input type="number" id="tr" min="0" max="600" step="1" value="30" inputmode="numeric">
+          <span class="hint">Extra minutes spent fixing one error today</span>
+        </div>
+        <div class="field">
+          <label for="oversight">Oversight percent</label>
+          <input type="number" id="oversight" min="0" max="100" step="1" value="15" inputmode="numeric">
+          <span class="hint">Share of saved hours spent supervising the automation</span>
+        </div>
+        <div class="field">
+          <label for="transition">One time transition hours</label>
+          <input type="number" id="transition" min="0" max="2000" step="1" value="60" inputmode="numeric">
+          <span class="hint">Staff hours to set up and roll out, counted once, in year one only</span>
+        </div>
+      </div>
+      <div class="field-grid" style="margin-top:18px;">
+        <div class="field">
+          <label>Automation range, low to high percent</label>
+          <div class="field-pair">
+            <input type="number" id="autoLow" min="0" max="100" step="1" value="30" aria-label="Automation percent, low" inputmode="numeric">
+            <input type="number" id="autoHigh" min="0" max="100" step="1" value="55" aria-label="Automation percent, high" inputmode="numeric">
+          </div>
+          <span class="hint">Share of handling time an automation typically removes</span>
+        </div>
+        <div class="field">
+          <label>Error reduction range, low to high percent</label>
+          <div class="field-pair">
+            <input type="number" id="errLow" min="0" max="100" step="1" value="40" aria-label="Error reduction percent, low" inputmode="numeric">
+            <input type="number" id="errHigh" min="0" max="100" step="1" value="65" aria-label="Error reduction percent, high" inputmode="numeric">
+          </div>
+          <span class="hint">Share of rework an automation typically removes</span>
+        </div>
+        <div class="field">
+          <label>Monthly software cost, low to high dollars</label>
+          <div class="field-pair">
+            <input type="number" id="softLow" min="0" max="100000" step="10" value="300" aria-label="Monthly software cost, low" inputmode="numeric">
+            <input type="number" id="softHigh" min="0" max="100000" step="10" value="900" aria-label="Monthly software cost, high" inputmode="numeric">
+          </div>
+          <span class="hint">Typical vendor pricing range for this workflow</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="results-band" id="results">
+  <div class="wrap">
+    <h2>3. Your estimated savings range</h2>
+    <p class="section-lede" id="activeTemplateLabel">Showing results for permit processing. This is a range,
+    not a single guess.</p>
+
+    <div class="honesty-line">
+      <p><strong>Most vendors show you the top number.</strong> We also show the costs. Software cost,
+      oversight cost, and setup time are already subtracted below, not hidden in fine print.</p>
+    </div>
+
+    <div class="headline-grid">
+      <div class="headline-card">
+        <p class="caps label">Annual hours saved</p>
+        <p class="range num"><span id="hoursLow">0</span><span class="to">to</span><span id="hoursHigh">0</span></p>
+        <div class="range-bar"><div class="fill"></div></div>
+      </div>
+      <div class="headline-card">
+        <p class="caps label">Annual gross dollars saved</p>
+        <p class="range num"><span id="grossLow">$0</span><span class="to">to</span><span id="grossHigh">$0</span></p>
+        <div class="range-bar"><div class="fill"></div></div>
+      </div>
+    </div>
+
+    <p class="caps" style="color:var(--navy); margin-bottom:10px;">Costs, itemized, not netted out silently</p>
+    <ul class="cost-list">
+      <li>
+        <span class="c-label">Software cost, annual<span class="c-sub">Monthly vendor cost times twelve</span></span>
+        <span class="c-val num" id="softwareCostLine">$0 to $0</span>
+      </li>
+      <li>
+        <span class="c-label">Oversight cost, annual<span class="c-sub">Staff time spent supervising the automated workflow</span></span>
+        <span class="c-val num" id="oversightCostLine">$0</span>
+      </li>
+      <li>
+        <span class="c-label">Transition cost, one time<span class="c-sub">Setup and rollout hours, counted once, in year one only</span></span>
+        <span class="c-val num" id="transitionCostLine">$0</span>
+      </li>
+    </ul>
+
+    <div class="net-grid">
+      <div class="net-card">
+        <p class="caps label">Net savings, year two and after</p>
+        <p class="range num"><span id="netOngoingLow">$0</span><span class="to">to</span><span id="netOngoingHigh">$0</span></p>
+        <p class="foot">Gross savings minus oversight cost minus software cost</p>
+      </div>
+      <div class="net-card">
+        <p class="caps label">Net savings, year one</p>
+        <p class="range num"><span id="netYear1Low">$0</span><span class="to">to</span><span id="netYear1High">$0</span></p>
+        <p class="foot">Same as above, minus the one time transition cost</p>
+      </div>
+    </div>
+
+    <div class="inputs-recap" id="inputsRecap">
+      <p class="caps">Inputs used for this estimate</p>
+      <ul id="inputsRecapList"></ul>
+    </div>
+
+    <div class="caveat-block">
+      <p>This is an estimate range built from your inputs and named default assumptions, not a
+      quote and not a guarantee. It is not a substitute for a real workflow assessment.</p>
+      <p>Defaults for the fields you have not changed are labeled industry rules of thumb above,
+      not proven results for your organization.</p>
+    </div>
+
+    <details class="math-panel">
+      <summary>See the full math behind this number</summary>
+      <div class="math-body">
+        <p>All twelve steps run in your browser only. Nothing you type here is sent anywhere.</p>
+        <ol id="mathSteps"></ol>
+        <p style="margin-top:12px;">Current annual labor cost at today&#39;s handling time, before any
+        automation, for reference: <span class="num" id="laborCostLine">$0</span>.</p>
+      </div>
+    </details>
+
+    <div class="action-row no-print">
+      <button type="button" class="btn-navy" id="printBtn">Print or save as PDF</button>
+      <a class="btn-outline" href="../../index.html#contact">Talk to us about this workflow</a>
+    </div>
+  </div>
+</section>
+
+<section class="crosslink no-print">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>Want a second opinion on this number?</h2>
+        <p>916 Consulting turns this estimate into a real workflow assessment, then builds and
+        oversees the automation itself if it is worth doing.</p>
+      </div>
+      <a class="btn-navy" href="../../index.html#contact">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+<section class="subscribe no-print" id="subscribe">
+  <div class="wrap">
+    <h2>Get the monthly NJ AI Watch briefing.</h2>
+    <p>One email a month with what changed and what it means for your organization. No spam,
+    unsubscribe anytime. Your address is used only for this briefing, nothing you entered above
+    is included.</p>
+    <form action="https://buttondown.com/api/emails/embed-subscribe/916consulting" method="post">
+      <input type="email" name="email" placeholder="you@youragency.gov" required aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="fine">Published by 916 Consulting, LLC. Your address is used only for this briefing.</p>
+  </div>
+</section>
+
+<footer class="no-print">
+  <div class="wrap">
+    <a class="logo" href="../../index.html" aria-label="916 Consulting home">
+      <span class="numerals">9<span class="one">1</span>6</span>
+      <span class="caption">Consulting</span>
+    </a>
+    <span class="fine">An estimate tool, not a quote or a guarantee. Confirm any workflow decision
+    with a real assessment. © 2026 916 Consulting, LLC, New Jersey</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var TEMPLATES = {
+    permit: { name: "Permit processing", group: "gov", sub: "County or municipal permitting", V: 150, Tm: 45, C: 45, Em: 12, Tr: 30, autoLow: 30, autoHigh: 55, errLow: 40, errHigh: 65, softLow: 300, softHigh: 900, oversight: 15, transition: 60 },
+    records: { name: "Records requests, OPRA", group: "gov", sub: "Public records intake and fulfillment", V: 80, Tm: 35, C: 40, Em: 8, Tr: 25, autoLow: 35, autoHigh: 60, errLow: 30, errHigh: 55, softLow: 200, softHigh: 600, oversight: 20, transition: 40 },
+    license: { name: "License renewals", group: "gov", sub: "Business or professional license renewal", V: 300, Tm: 20, C: 35, Em: 10, Tr: 15, autoLow: 40, autoHigh: 65, errLow: 35, errHigh: 60, softLow: 250, softHigh: 700, oversight: 12, transition: 50 },
+    inspection: { name: "Inspection scheduling", group: "gov", sub: "Code, health, or fire inspection scheduling", V: 120, Tm: 25, C: 38, Em: 15, Tr: 20, autoLow: 35, autoHigh: 60, errLow: 40, errHigh: 65, softLow: 150, softHigh: 500, oversight: 15, transition: 35 },
+    intake: { name: "Patient intake", group: "health", sub: "New and returning patient intake", V: 600, Tm: 18, C: 32, Em: 14, Tr: 12, autoLow: 30, autoHigh: 55, errLow: 35, errHigh: 60, softLow: 300, softHigh: 1000, oversight: 15, transition: 45 },
+    priorauth: { name: "Prior authorizations", group: "health", sub: "Payer prior authorization requests", V: 200, Tm: 40, C: 34, Em: 20, Tr: 35, autoLow: 35, autoHigh: 60, errLow: 30, errHigh: 55, softLow: 400, softHigh: 1500, oversight: 20, transition: 70 },
+    reminders: { name: "Appointment reminders", group: "health", sub: "Scheduling and reminder outreach", V: 1500, Tm: 4, C: 28, Em: 8, Tr: 4, autoLow: 60, autoHigh: 85, errLow: 30, errHigh: 50, softLow: 100, softHigh: 400, oversight: 8, transition: 20 },
+    referral: { name: "Referral processing", group: "health", sub: "Specialist and service referral handling", V: 250, Tm: 22, C: 33, Em: 15, Tr: 18, autoLow: 30, autoHigh: 55, errLow: 30, errHigh: 55, softLow: 250, softHigh: 800, oversight: 15, transition: 40 }
+  };
+
+  var els = {};
+  ["v","tm","c","em","tr","oversight","transition","autoLow","autoHigh","errLow","errHigh","softLow","softHigh"].forEach(function (id) {
+    els[id] = document.getElementById(id);
+  });
+
+  var gridGov = document.getElementById("grid-gov");
+  var gridHealth = document.getElementById("grid-health");
+  var activeKey = "permit";
+
+  function buildCard(key, t) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "template-card";
+    btn.dataset.key = key;
+    btn.innerHTML = '<div class="t-name">' + t.name + '</div><div class="t-sub">' + t.sub + '</div><div class="active-flag">Selected, editable below</div>';
+    btn.addEventListener("click", function () { applyTemplate(key); });
+    return btn;
+  }
+
+  Object.keys(TEMPLATES).forEach(function (key) {
+    var t = TEMPLATES[key];
+    var card = buildCard(key, t);
+    if (t.group === "gov") gridGov.appendChild(card);
+    else gridHealth.appendChild(card);
+  });
+
+  function applyTemplate(key) {
+    var t = TEMPLATES[key];
+    if (!t) return;
+    activeKey = key;
+    els.v.value = t.V; els.tm.value = t.Tm; els.c.value = t.C; els.em.value = t.Em;
+    els.tr.value = t.Tr; els.oversight.value = t.oversight; els.transition.value = t.transition;
+    els.autoLow.value = t.autoLow; els.autoHigh.value = t.autoHigh;
+    els.errLow.value = t.errLow; els.errHigh.value = t.errHigh;
+    els.softLow.value = t.softLow; els.softHigh.value = t.softHigh;
+    document.querySelectorAll(".template-card").forEach(function (c) {
+      c.classList.toggle("active", c.dataset.key === key);
+    });
+    document.getElementById("activeTemplateLabel").textContent =
+      "Showing results for " + t.name.toLowerCase() + ". This is a range, not a single guess.";
+    recalc();
+  }
+
+  var advToggle = document.getElementById("advToggle");
+  var advPanel = document.getElementById("advPanel");
+  advToggle.addEventListener("click", function () {
+    var open = advPanel.classList.toggle("open");
+    advToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    advToggle.textContent = open ? "Hide the assumptions I can adjust" : "Show the assumptions I can adjust";
+  });
+
+  function num(el, fallback) {
+    var v = parseFloat(el.value);
+    return isFinite(v) ? v : (fallback || 0);
+  }
+  function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+  function money(v) {
+    var sign = v < 0 ? "-" : "";
+    return sign + "$" + Math.round(Math.abs(v)).toLocaleString("en-US");
+  }
+  function hours(v) {
+    return Math.round(Math.max(0, v)).toLocaleString("en-US") + " hrs";
+  }
+
+  function calculate() {
+    var V = Math.max(0, num(els.v, 0));
+    var Tm = Math.max(0, num(els.tm, 0));
+    var C = Math.max(0, num(els.c, 0));
+    var Em = clamp(num(els.em, 0), 0, 100) / 100;
+    var Tr = Math.max(0, num(els.tr, 0));
+
+    var autoLow = clamp(num(els.autoLow, 0), 0, 100);
+    var autoHigh = clamp(num(els.autoHigh, 0), 0, 100);
+    if (autoLow > autoHigh) { var tmp = autoLow; autoLow = autoHigh; autoHigh = tmp; }
+    autoLow /= 100; autoHigh /= 100;
+
+    var errLow = clamp(num(els.errLow, 0), 0, 100);
+    var errHigh = clamp(num(els.errHigh, 0), 0, 100);
+    if (errLow > errHigh) { var tmp2 = errLow; errLow = errHigh; errHigh = tmp2; }
+    errLow /= 100; errHigh /= 100;
+
+    var softLow = Math.max(0, num(els.softLow, 0));
+    var softHigh = Math.max(0, num(els.softHigh, 0));
+    if (softLow > softHigh) { var tmp3 = softLow; softLow = softHigh; softHigh = tmp3; }
+
+    var oversightPct = clamp(num(els.oversight, 0), 0, 100) / 100;
+    var transitionHours = Math.max(0, num(els.transition, 0));
+
+    var handlingHours = V * Tm / 60 * 12;
+    var reworkHours = V * Em * Tr / 60 * 12;
+    var totalHours = handlingHours + reworkHours;
+    var laborCost = totalHours * C;
+
+    var autoHandlingLow = handlingHours * (1 - autoLow);
+    var autoHandlingHigh = handlingHours * (1 - autoHigh);
+    var autoReworkLow = reworkHours * (1 - errLow);
+    var autoReworkHigh = reworkHours * (1 - errHigh);
+
+    var grossHoursLow = totalHours - (autoHandlingLow + autoReworkLow);
+    var grossHoursHigh = totalHours - (autoHandlingHigh + autoReworkHigh);
+    grossHoursLow = Math.max(0, grossHoursLow);
+    grossHoursHigh = Math.max(0, grossHoursHigh);
+    if (grossHoursLow > grossHoursHigh) { var tmp4 = grossHoursLow; grossHoursLow = grossHoursHigh; grossHoursHigh = tmp4; }
+
+    var grossDollarsLow = grossHoursLow * C;
+    var grossDollarsHigh = grossHoursHigh * C;
+
+    var midHours = (grossHoursLow + grossHoursHigh) / 2;
+    var oversightHours = midHours * oversightPct;
+    var oversightDollars = oversightHours * C;
+
+    var annualSoftwareLow = softLow * 12;
+    var annualSoftwareHigh = softHigh * 12;
+
+    var transitionCost = transitionHours * C;
+
+    var netOngoingLow = grossDollarsLow - oversightDollars - annualSoftwareHigh;
+    var netOngoingHigh = grossDollarsHigh - oversightDollars - annualSoftwareLow;
+
+    var netYear1Low = netOngoingLow - transitionCost;
+    var netYear1High = netOngoingHigh - transitionCost;
+
+    return {
+      V: V, Tm: Tm, C: C, Em: Em * 100, Tr: Tr,
+      autoLow: autoLow * 100, autoHigh: autoHigh * 100,
+      errLow: errLow * 100, errHigh: errHigh * 100,
+      softLow: softLow, softHigh: softHigh,
+      oversightPct: oversightPct * 100, transitionHours: transitionHours,
+      handlingHours: handlingHours, reworkHours: reworkHours, totalHours: totalHours, laborCost: laborCost,
+      grossHoursLow: grossHoursLow, grossHoursHigh: grossHoursHigh,
+      grossDollarsLow: grossDollarsLow, grossDollarsHigh: grossDollarsHigh,
+      oversightHours: oversightHours, oversightDollars: oversightDollars,
+      annualSoftwareLow: annualSoftwareLow, annualSoftwareHigh: annualSoftwareHigh,
+      transitionCost: transitionCost,
+      netOngoingLow: netOngoingLow, netOngoingHigh: netOngoingHigh,
+      netYear1Low: netYear1Low, netYear1High: netYear1High
+    };
+  }
+
+  function setText(id, text) { document.getElementById(id).textContent = text; }
+
+  function render() {
+    var r = calculate();
+
+    setText("hoursLow", hours(r.grossHoursLow));
+    setText("hoursHigh", hours(r.grossHoursHigh));
+    setText("grossLow", money(r.grossDollarsLow));
+    setText("grossHigh", money(r.grossDollarsHigh));
+
+    setText("softwareCostLine", money(r.annualSoftwareLow) + " to " + money(r.annualSoftwareHigh));
+    setText("oversightCostLine", money(r.oversightDollars));
+    setText("transitionCostLine", money(r.transitionCost));
+
+    setText("netOngoingLow", money(r.netOngoingLow));
+    setText("netOngoingHigh", money(r.netOngoingHigh));
+    setText("netYear1Low", money(r.netYear1Low));
+    setText("netYear1High", money(r.netYear1High));
+
+    setText("laborCostLine", money(r.laborCost));
+
+    var recap = document.getElementById("inputsRecapList");
+    recap.innerHTML =
+      "<li>Items per month: " + Math.round(r.V).toLocaleString("en-US") + "</li>" +
+      "<li>Minutes per item today: " + Math.round(r.Tm).toLocaleString("en-US") + "</li>" +
+      "<li>Loaded hourly cost: " + money(r.C) + "</li>" +
+      "<li>Error or rework rate: " + r.Em.toFixed(1) + " percent</li>" +
+      "<li>Rework minutes per error: " + Math.round(r.Tr).toLocaleString("en-US") + "</li>" +
+      "<li>Automation range: " + Math.round(r.autoLow) + " to " + Math.round(r.autoHigh) + " percent</li>" +
+      "<li>Error reduction range: " + Math.round(r.errLow) + " to " + Math.round(r.errHigh) + " percent</li>" +
+      "<li>Monthly software cost: " + money(r.softLow) + " to " + money(r.softHigh) + "</li>" +
+      "<li>Oversight percent: " + Math.round(r.oversightPct) + " percent</li>" +
+      "<li>One time transition hours: " + Math.round(r.transitionHours).toLocaleString("en-US") + "</li>";
+
+    var steps = document.getElementById("mathSteps");
+    steps.innerHTML =
+      "<li>Current annual handling hours equals items per month times minutes per item, divided by 60, times 12 months. Result: " + Math.round(r.handlingHours).toLocaleString("en-US") + " hours.</li>" +
+      "<li>Current annual rework hours equals items per month times the error rate times rework minutes, divided by 60, times 12 months. Result: " + Math.round(r.reworkHours).toLocaleString("en-US") + " hours.</li>" +
+      "<li>Current total annual hours is the sum of the two lines above: " + Math.round(r.totalHours).toLocaleString("en-US") + " hours, worth " + money(r.laborCost) + " a year at your loaded hourly cost.</li>" +
+      "<li>The low bound applies the low end of the automation range and the low end of the error reduction range, leaving more hours in place, a conservative case.</li>" +
+      "<li>The high bound applies the high end of both ranges, removing more hours, an optimistic case.</li>" +
+      "<li>Gross hours and dollars saved are current total hours minus the hours still required under each case, multiplied by your hourly cost for the dollar figure.</li>" +
+      "<li>Oversight cost applies your oversight percent to the midpoint of the saved hours, then converts to dollars at your hourly cost.</li>" +
+      "<li>Software cost is your monthly range times 12, shown as its own annual range.</li>" +
+      "<li>Transition cost is your one time setup hours times your hourly cost, charged once, in year one only.</li>" +
+      "<li>Net savings, year two and after, subtracts oversight cost and software cost from gross savings, pairing the conservative gross figure with the higher software cost for the low bound, and the optimistic gross figure with the lower software cost for the high bound.</li>" +
+      "<li>Net savings, year one, is the same calculation minus the one time transition cost.</li>";
+  }
+
+  function recalc() { render(); }
+
+  Object.keys(els).forEach(function (id) {
+    els[id].addEventListener("input", recalc);
+  });
+
+  var printBtn = document.getElementById("printBtn");
+  printBtn.addEventListener("click", function () { window.print(); });
+
+  applyTemplate("permit");
+})();
+</script>
+
+</body>
+</html>

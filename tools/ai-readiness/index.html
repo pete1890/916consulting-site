@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Readiness Assessment for Government and Healthcare | 916 Consulting</title>
+<meta name="description" content="A free thirteen question assessment that scores your organization's AI oversight across Govern, Assess, Evaluate, and Administer, built for New Jersey government agencies and healthcare organizations by 916 Consulting.">
+<link rel="canonical" href="https://www.916consulting.com/tools/ai-readiness/">
+<meta property="og:title" content="AI Readiness Assessment for Government and Healthcare">
+<meta property="og:description" content="Answer thirteen questions and get a scored read on your AI governance gaps, in about five minutes, from 916 Consulting.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.916consulting.com/tools/ai-readiness/">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%230F3540"/><text x="32" y="44" font-family="Georgia,serif" font-size="30" text-anchor="middle" fill="%23FBFCFC">9<tspan fill="%234FAE9B">1</tspan>6</text></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #174A56; --teal: #4FAE9B; --depth: #0F3540;
+    --mist: #EEF3F2; --paper: #FBFCFC;
+    --text: #174A56; --text-dim: #56737c;
+    --line: #dde7e5; --line-strong: #c6d6d3; --card: #ffffff;
+    --shadow-card: 0 1px 2px rgba(15,53,64,0.04), 0 8px 24px rgba(15,53,64,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--paper); color: var(--text);
+    line-height: 1.68; font-size: 16px; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Marcellus", Georgia, serif; font-weight: 400; line-height: 1.16; }
+  .caps { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+  .logo { display: inline-flex; align-items: baseline; gap: 12px; text-decoration: none; color: var(--navy); }
+  .logo .numerals { font-family: "Marcellus", Georgia, serif; font-size: 1.5rem; line-height: 1; }
+  .logo .one { color: var(--teal); }
+  .logo .caption { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,252,252,0.88); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  nav.links { display: flex; gap: 24px; align-items: center; }
+  nav.links a { color: var(--text-dim); text-decoration: none; font-size: 0.86rem; font-weight: 500; }
+  nav.links a:hover { color: var(--teal); }
+  .nav-cta { color: #fff !important; background: var(--navy); padding: 8px 16px; border-radius: 6px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--depth); }
+  @media (max-width: 640px) { nav.links a:not(.nav-cta) { display: none; } }
+
+  .page-head { background: linear-gradient(180deg, var(--mist), var(--paper)); border-bottom: 1px solid var(--line); padding: 60px 0 44px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--teal); margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--teal); }
+  .page-head h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--navy); max-width: 26ch; }
+  .page-head p.lead { margin-top: 18px; color: var(--text-dim); font-size: 0.98rem; max-width: 66ch; }
+
+  main.wrap { padding: 44px 0 70px; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+    box-shadow: var(--shadow-card); padding: 32px;
+  }
+  @media (max-width: 640px) { .card { padding: 22px; } }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* Track selector */
+  .tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 26px 0 30px; }
+  @media (max-width: 640px) { .tracks { grid-template-columns: 1fr; } }
+  .track-card {
+    display: block; text-align: left; width: 100%; cursor: pointer;
+    background: var(--paper); border: 1px solid var(--line-strong); border-radius: 4px;
+    padding: 24px; font-family: inherit; color: var(--text);
+  }
+  .track-card:hover { border-color: var(--teal); }
+  .track-card.selected { border-color: var(--teal); box-shadow: inset 0 0 0 1px var(--teal); background: var(--mist); }
+  .track-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; }
+  .track-card p { font-size: 0.88rem; color: var(--text-dim); }
+  .track-card input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+  .btn-navy, button.btn-navy {
+    display: inline-block; text-decoration: none; background: var(--navy); color: #fff;
+    padding: 13px 26px; border-radius: 6px; font-weight: 600; font-size: 0.92rem;
+    font-family: inherit; border: 0; cursor: pointer;
+  }
+  .btn-navy:hover { background: var(--depth); }
+  .btn-navy:disabled { background: var(--line-strong); color: var(--text-dim); cursor: not-allowed; }
+  .btn-ghost {
+    display: inline-block; background: transparent; color: var(--text-dim);
+    padding: 13px 20px; border-radius: 6px; font-weight: 600; font-size: 0.92rem;
+    font-family: inherit; border: 1px solid var(--line-strong); cursor: pointer;
+  }
+  .btn-ghost:hover { color: var(--navy); border-color: var(--teal); }
+
+  /* Question screen */
+  .progress-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .progress-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
+  .progress-track { height: 5px; background: var(--mist); border-radius: 999px; overflow: hidden; margin-bottom: 30px; }
+  .progress-fill { height: 100%; background: var(--teal); border-radius: 999px; transition: width 0.25s ease; }
+
+  .dim-tag {
+    display: inline-block; font-size: 0.64rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--teal); border: 1px solid var(--line-strong);
+    border-radius: 999px; padding: 4px 12px; margin-bottom: 16px; background: var(--paper);
+  }
+  .question-text { font-size: 1.3rem; color: var(--navy); margin-bottom: 24px; max-width: 58ch; }
+
+  .options { display: grid; gap: 12px; margin-bottom: 30px; }
+  .option {
+    display: flex; align-items: center; gap: 14px; cursor: pointer;
+    background: var(--paper); border: 1px solid var(--line-strong); border-radius: 4px;
+    padding: 16px 18px; font-size: 0.94rem;
+  }
+  .option:hover { border-color: var(--teal); }
+  .option:focus-within { outline: 2px solid var(--teal); outline-offset: 2px; }
+  .option.selected { border-color: var(--teal); box-shadow: inset 0 0 0 1px var(--teal); background: var(--mist); }
+  .option .dot {
+    flex: 0 0 auto; width: 18px; height: 18px; border-radius: 50%;
+    border: 2px solid var(--line-strong); position: relative;
+  }
+  .option.selected .dot { border-color: var(--teal); }
+  .option.selected .dot::after {
+    content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--teal);
+  }
+
+  .question-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+
+  /* Results screen */
+  .score-head { text-align: center; padding: 8px 0 30px; border-bottom: 1px solid var(--line); margin-bottom: 30px; }
+  .grade-letter { font-family: "Marcellus", Georgia, serif; font-size: 4rem; color: var(--navy); line-height: 1; }
+  .grade-letter .teal { color: var(--teal); }
+  .score-number { font-size: 1.05rem; color: var(--text-dim); margin-top: 6px; }
+  .grade-label { font-size: 1rem; font-weight: 600; color: var(--navy); margin-top: 4px; }
+
+  .dims { display: grid; gap: 20px; margin-bottom: 34px; }
+  .dim-row .dim-row-head { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.88rem; }
+  .dim-row .dim-name { font-weight: 600; color: var(--navy); }
+  .dim-row .dim-grade { color: var(--text-dim); }
+  .bar-track { height: 14px; background: var(--mist); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; background: var(--teal); border-radius: 999px 0 0 999px; }
+  .bar-score { display: block; margin-top: 4px; font-size: 0.78rem; color: var(--text-dim); text-align: right; }
+
+  h2.section-h { font-size: 1.2rem; color: var(--navy); margin-bottom: 14px; }
+
+  .gaps { display: grid; gap: 14px; margin-bottom: 34px; }
+  .gap {
+    border-left: 2px solid var(--teal); background: var(--mist);
+    border-radius: 0 4px 4px 0; padding: 14px 18px;
+  }
+  .gap .gap-source { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+  .gap p { font-size: 0.92rem; color: var(--text); }
+
+  .framing {
+    margin: 0 0 30px; padding: 14px 18px; max-width: 72ch;
+    background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--teal);
+    border-radius: 4px; font-size: 0.85rem; color: var(--text-dim);
+  }
+
+  .result-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; }
+
+  .retake-row { margin-top: 18px; }
+  .retake-row button {
+    background: none; border: none; color: var(--text-dim); text-decoration: underline;
+    font-family: inherit; font-size: 0.85rem; cursor: pointer; padding: 0;
+  }
+  .retake-row button:hover { color: var(--teal); }
+
+  .subscribe { background: var(--depth); color: var(--mist); padding: 56px 0; text-align: center; margin-top: 50px; border-radius: 4px; }
+  .subscribe h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); color: #fff; margin-bottom: 10px; }
+  .subscribe p { color: #a9c0bd; font-size: 0.94rem; max-width: 50ch; margin: 0 auto 26px; }
+  .subscribe form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; padding: 0 20px; }
+  .subscribe input[type="email"] {
+    font-family: inherit; font-size: 0.92rem; padding: 13px 16px; min-width: 280px;
+    border: 1px solid rgba(79,174,155,0.4); border-radius: 6px;
+    background: rgba(238,243,242,0.06); color: #fff;
+  }
+  .subscribe input[type="email"]::placeholder { color: #7fa8a0; }
+  .subscribe button {
+    font-family: inherit; font-size: 0.92rem; font-weight: 600;
+    background: var(--teal); color: var(--depth); border: 0; border-radius: 6px;
+    padding: 13px 24px; cursor: pointer;
+  }
+  .subscribe button:hover { filter: brightness(1.08); }
+  .subscribe .fine { font-size: 0.76rem; color: #7fa8a0; margin-top: 14px; }
+
+  .crosslink { padding: 50px 0 0; }
+  .crosslink .box {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow-card);
+    padding: 26px 28px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center;
+  }
+  .crosslink h2 { font-size: 1.15rem; color: var(--navy); }
+  .crosslink p { color: var(--text-dim); font-size: 0.88rem; max-width: 52ch; }
+
+  footer { padding: 28px 0; font-size: 0.78rem; color: var(--text-dim); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+  footer .fine { max-width: 60ch; }
+
+  noscript .card { display: block; margin: 30px auto; max-width: 640px; }
+
+  @media print {
+    header.site, .page-head, .crosslink, .subscribe, footer,
+    #screen-intro, #screen-question, .result-actions, .retake-row { display: none !important; }
+    body { background: #fff; }
+    #screen-results { display: block !important; }
+    #screen-results .card { box-shadow: none; border: none; padding: 0; }
+    .wrap { max-width: 100%; padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="../../index.html" aria-label="916 Consulting home">
+      <span class="numerals">9<span class="one">1</span>6</span>
+      <span class="caption">Consulting</span>
+    </a>
+    <nav class="links">
+      <a href="../../index.html#ai">AI Oversight</a>
+      <a href="../../index.html#services">Services</a>
+      <a href="../../nj-ai-watch/">NJ AI Watch</a>
+      <a class="nav-cta" href="../../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <span class="eyebrow caps">Free Assessment</span>
+    <h1>AI Readiness Assessment for government and healthcare</h1>
+    <p class="lead">Thirteen questions, about five minutes, scored across the four dimensions 916 uses to evaluate AI oversight: Govern, Assess, Evaluate, and Administer. Answer honestly and see exactly where your organization stands.</p>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <noscript>
+    <div class="card">
+      <h2 class="section-h">JavaScript is required</h2>
+      <p>This assessment scores your answers in your browser as you go, so it needs JavaScript turned on to work. If you would rather skip straight to a conversation, <a href="../../index.html#contact">contact 916 Consulting</a> directly.</p>
+    </div>
+  </noscript>
+
+  <div id="app">
+
+    <!-- INTRO SCREEN -->
+    <section class="screen active card" id="screen-intro">
+      <h2 class="section-h">Choose your track</h2>
+      <p style="color:var(--text-dim); font-size:0.92rem;">Question wording adjusts slightly depending on whether you pick Government or Healthcare. Pick the one that best describes your organization.</p>
+
+      <div class="tracks" role="radiogroup" aria-label="Choose your track">
+        <label class="track-card" id="track-card-government">
+          <input type="radio" name="track" value="government" class="sr-only">
+          <h3>Government</h3>
+          <p>Municipalities, counties, school districts, and authorities.</p>
+        </label>
+        <label class="track-card" id="track-card-healthcare">
+          <input type="radio" name="track" value="healthcare" class="sr-only">
+          <h3>Healthcare</h3>
+          <p>Hospitals, health systems, and independent practices.</p>
+        </label>
+      </div>
+
+      <button type="button" class="btn-navy" id="start-btn" disabled>Start the assessment</button>
+    </section>
+
+    <!-- QUESTION SCREEN -->
+    <section class="screen card" id="screen-question">
+      <div class="progress-row">
+        <span class="progress-label" id="progress-label">Question 1 of 13</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+
+      <span class="dim-tag" id="question-dim">Govern</span>
+      <p class="question-text" id="question-text"></p>
+
+      <div class="options" id="question-options" role="radiogroup"></div>
+
+      <div class="question-actions">
+        <button type="button" class="btn-ghost" id="back-btn">Back</button>
+        <button type="button" class="btn-navy" id="next-btn" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- RESULTS SCREEN -->
+    <section class="screen card" id="screen-results">
+      <div class="score-head">
+        <div class="grade-letter" id="grade-letter">A</div>
+        <p class="score-number" id="score-number">Overall score: 0 of 100</p>
+        <p class="grade-label" id="grade-label">AI Ready</p>
+      </div>
+
+      <h2 class="section-h">Your four dimensions</h2>
+      <div class="dims" id="dims-list"></div>
+
+      <h2 class="section-h">Your top gaps</h2>
+      <div class="gaps" id="gaps-list"></div>
+
+      <p class="framing">This is a self assessment, not a compliance audit or legal opinion. It is meant to show you where to look first, not to replace a formal review.</p>
+
+      <div class="result-actions">
+        <button type="button" class="btn-navy" id="print-btn">Print or save as PDF</button>
+        <a class="btn-ghost" href="../../index.html#contact">Start a Conversation</a>
+      </div>
+
+      <div class="retake-row">
+        <button type="button" id="retake-btn">Retake the assessment</button>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="subscribe" id="subscribe">
+    <div class="wrap">
+      <h2>Get the monthly NJ AI Watch briefing.</h2>
+      <p>One email a month with what changed and what it means for your organization.
+      No spam, unsubscribe anytime.</p>
+      <form action="https://buttondown.com/api/emails/embed-subscribe/916consulting" method="post">
+        <input type="email" name="email" placeholder="you@youragency.gov" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="fine">Published by 916 Consulting, LLC. Your address is used only for this briefing.</p>
+    </div>
+  </section>
+
+  <section class="crosslink">
+    <div class="box">
+      <div>
+        <h2>Want the regulatory picture too?</h2>
+        <p>NJ AI Watch tracks AI policy and regulation for New Jersey government and regional healthcare, updated monthly.</p>
+      </div>
+      <a class="btn-navy" href="../../nj-ai-watch/">Read NJ AI Watch</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="../../index.html" aria-label="916 Consulting home">
+      <span class="numerals">9<span class="one">1</span>6</span>
+      <span class="caption">Consulting</span>
+    </a>
+    <span class="fine">Not legal advice. This assessment is a self evaluation tool, not a compliance audit.
+    © 2026 916 Consulting, LLC · New Jersey</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var STANDARD_SCALE = ["No", "Informal only", "Partial or in progress", "Yes, documented and current"];
+
+  var QUESTIONS = [
+    {
+      id: "G1", dim: "Govern",
+      government: "Does your organization have a written policy on when employees can and cannot use AI tools at work?",
+      healthcare: "Does your organization have a written policy on when staff can and cannot use AI tools at work?",
+      scale: STANDARD_SCALE
+    },
+    {
+      id: "G2", dim: "Govern",
+      government: "If an employee pasted resident data into a public AI tool today, would anyone know?",
+      healthcare: "If an employee pasted patient information into a public AI tool today, would anyone know?",
+      scale: ["No way to know", "Only if the employee mentioned it", "We could find out with an investigation", "Yes, we would know quickly"]
+    },
+    {
+      id: "G3", dim: "Govern",
+      government: "Is one specific person or committee responsible for AI decisions, or does it fall to whoever raises their hand?",
+      healthcare: "Is one specific person or committee responsible for AI decisions, or does it fall to whoever raises their hand?",
+      scale: ["Nobody owns it", "It falls to IT by default", "A person is responsible but it is not formal", "Yes, a named owner or committee"]
+    },
+    {
+      id: "G4", dim: "Govern",
+      government: "If someone filed an OPRA request for records showing how your agency uses AI, could you produce a clear answer in a week?",
+      healthcare: "If a regulator asked how AI tools touch protected health information in your organization, could you answer clearly today?",
+      scale: ["We would not know where to start", "We could piece something together", "Mostly yes, with some gaps", "Yes, we could answer that today"]
+    },
+    {
+      id: "A1", dim: "Assess",
+      government: "Can you name the three places in your agency where AI would help the most right now?",
+      healthcare: "Can you name the three places in your practice or facility where AI would help the most right now?",
+      scale: ["We have not identified any", "We have ideas but nothing written down", "We have a short list", "Yes, a clear prioritized list"]
+    },
+    {
+      id: "A2", dim: "Assess",
+      government: "Before adopting an AI tool, do you check whether the data behind it is accurate and complete enough to trust?",
+      healthcare: "Before adopting an AI tool, do you check whether the data behind it is accurate and complete enough to trust?",
+      scale: ["We do not check", "We assume it is fine", "We check sometimes", "Yes, every time"]
+    },
+    {
+      id: "A3", dim: "Assess",
+      government: "When a department asks for an AI tool, is there a process to size up the risk before saying yes, or does it come down to whoever asks loudest?",
+      healthcare: "When a department or provider asks for an AI tool, is there a process to size up the risk before saying yes, or does it come down to whoever asks loudest?",
+      scale: ["No process, decisions are ad hoc", "Loose conversation, nothing formal", "A checklist exists but is not always used", "Yes, every request goes through the same process"]
+    },
+    {
+      id: "E1", dim: "Evaluate",
+      government: "When you sign with an AI vendor, does the contract say who owns the data you put in and whether it can be used to train their model?",
+      healthcare: "When you sign with an AI vendor, does the contract say who owns the data you put in and whether it can be used to train their model?",
+      scale: ["We do not check this", "We assume standard terms are fine", "We check sometimes", "Yes, every contract"]
+    },
+    {
+      id: "E2", dim: "Evaluate",
+      government: "Do you compare AI vendors on anything besides price and features, such as accuracy claims, support, and what happens if you need to leave?",
+      healthcare: "Do you compare AI vendors on anything besides price and features, such as accuracy claims, support, and what happens if you need to leave?",
+      scale: ["Price and features only", "We ask a few extra questions informally", "We use some kind of checklist", "Yes, a formal evaluation every time"]
+    },
+    {
+      id: "E3", dim: "Evaluate",
+      government: "When an existing vendor adds a new AI feature to a system you already use, does anyone review it before it goes live, or does it just show up?",
+      healthcare: "When your EHR or practice management vendor adds a new AI feature, does anyone review it before it goes live, or does it just show up?",
+      scale: ["It just shows up", "We notice eventually", "Someone reviews it, informally", "Yes, formal review before anything goes live"]
+    },
+    {
+      id: "AD1", dim: "Administer",
+      government: "Once an AI tool is in use, does anyone track how often it is actually used and by whom?",
+      healthcare: "Once an AI tool is in use, does anyone track how often it is actually used and by whom?",
+      scale: ["No visibility at all", "We could find out if asked", "We check occasionally", "Yes, ongoing visibility"]
+    },
+    {
+      id: "AD2", dim: "Administer",
+      government: "If an AI tool gives a wrong or biased answer, is there a process to catch it, log it, and fix it?",
+      healthcare: "If an AI tool gives a wrong or biased answer, is there a process to catch it, log it, and fix it?",
+      scale: ["No process", "We would deal with it if someone complained", "An informal process exists", "Yes, a formal review process"]
+    },
+    {
+      id: "AD3", dim: "Administer",
+      government: "Does leadership or the governing body get a regular update on how AI is being used across the organization?",
+      healthcare: "Does leadership or the board get a regular update on how AI is being used across the organization?",
+      scale: ["Never", "Only if something goes wrong", "Occasionally", "Yes, on a regular schedule"]
+    }
+  ];
+
+  var DIMENSION_ORDER = ["Govern", "Assess", "Evaluate", "Administer"];
+  var DIMENSION_POINTS_POSSIBLE = { Govern: 12, Assess: 9, Evaluate: 9, Administer: 9 };
+
+  var GRADES = [
+    { min: 90, max: 100, grade: "A", label: "AI Ready" },
+    { min: 75, max: 89, grade: "B", label: "Building Well" },
+    { min: 60, max: 74, grade: "C", label: "Real Gaps" },
+    { min: 40, max: 59, grade: "D", label: "High Exposure" },
+    { min: 0, max: 39, grade: "F", label: "No Guardrails" }
+  ];
+
+  var GAP_LIBRARY = {
+    G1: "You do not have a written AI policy yet. Until one exists, every employee is making their own call about what is safe to share.",
+    G2: "If someone shared sensitive data with a public AI tool today, you likely would not find out. That is the fastest path to a public incident.",
+    G3: "No one is clearly responsible for AI decisions. Without an owner, oversight happens by accident or not at all.",
+    G4: "If someone asked how AI touches your sensitive data today, you could not give a clear answer. That is exactly the moment you do not want to be caught flat footed.",
+    A1: "You have not identified where AI would actually help. Without that list, effort goes to whatever is loudest, not what matters.",
+    A2: "You are not checking whether the data behind your AI tools is accurate and complete. Bad inputs produce confident sounding wrong answers, and nobody catches it.",
+    A3: "There is no real process to size up risk before saying yes to a new AI tool. Whoever asks loudest gets the tool, not whoever needs it most safely.",
+    E1: "You are not checking who owns your data or whether vendors can train on it. Sign enough of those contracts and you lose control of your own information.",
+    E2: "You compare AI vendors on price and features alone. Accuracy, support, and exit terms only matter once something goes wrong, and by then the contract is signed.",
+    E3: "New AI features from your existing vendors show up unreviewed. You are accepting new risk every time a vendor pushes an update, without ever being asked.",
+    AD1: "Nobody is tracking how AI tools are actually used. You cannot govern what you cannot see.",
+    AD2: "There is no process to catch a wrong or biased AI answer. Errors accumulate quietly until a person outside your organization notices first.",
+    AD3: "Leadership gets no regular update on how AI is being used. Decisions about real risk are happening below the level that is supposed to be accountable for them."
+  };
+
+  var DIMENSION_SUMMARY = {
+    Govern: "Govern is your biggest gap in this assessment. Policy, ownership, and accountability for AI are the foundation everything else sits on.",
+    Assess: "Assess is your biggest gap in this assessment. Without a clear view of where AI helps and whether your data can be trusted, adoption is guesswork.",
+    Evaluate: "Evaluate is your biggest gap in this assessment. Vendor discipline is where AI risk quietly gets signed away in a contract.",
+    Administer: "Administer is your biggest gap in this assessment. Without ongoing monitoring, you find out about problems from someone else, not from your own system."
+  };
+
+  // ---- state ----
+  var state = {
+    track: null,
+    index: 0,
+    answers: new Array(QUESTIONS.length).fill(null)
+  };
+
+  // ---- elements ----
+  var screens = {
+    intro: document.getElementById("screen-intro"),
+    question: document.getElementById("screen-question"),
+    results: document.getElementById("screen-results")
+  };
+  var trackCardGov = document.getElementById("track-card-government");
+  var trackCardHealth = document.getElementById("track-card-healthcare");
+  var startBtn = document.getElementById("start-btn");
+  var backBtn = document.getElementById("back-btn");
+  var nextBtn = document.getElementById("next-btn");
+  var progressLabel = document.getElementById("progress-label");
+  var progressFill = document.getElementById("progress-fill");
+  var questionDim = document.getElementById("question-dim");
+  var questionText = document.getElementById("question-text");
+  var questionOptions = document.getElementById("question-options");
+  var printBtn = document.getElementById("print-btn");
+  var retakeBtn = document.getElementById("retake-btn");
+
+  function showScreen(name) {
+    Object.keys(screens).forEach(function (key) {
+      screens[key].classList.toggle("active", key === name);
+    });
+    window.scrollTo({ top: screens[name].offsetTop - 90, behavior: "smooth" });
+  }
+
+  // ---- intro / track selection ----
+  function selectTrack(track) {
+    state.track = track;
+    trackCardGov.classList.toggle("selected", track === "government");
+    trackCardHealth.classList.toggle("selected", track === "healthcare");
+    trackCardGov.querySelector("input").checked = track === "government";
+    trackCardHealth.querySelector("input").checked = track === "healthcare";
+    startBtn.disabled = false;
+  }
+  trackCardGov.addEventListener("click", function () { selectTrack("government"); });
+  trackCardHealth.addEventListener("click", function () { selectTrack("healthcare"); });
+  [trackCardGov, trackCardHealth].forEach(function (card) {
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        card.click();
+      }
+    });
+    card.setAttribute("tabindex", "0");
+  });
+
+  startBtn.addEventListener("click", function () {
+    if (!state.track) return;
+    state.index = 0;
+    renderQuestion();
+    showScreen("question");
+  });
+
+  // ---- question rendering ----
+  function renderQuestion() {
+    var q = QUESTIONS[state.index];
+    var total = QUESTIONS.length;
+
+    progressLabel.textContent = "Question " + (state.index + 1) + " of " + total;
+    progressFill.style.width = (((state.index + 1) / total) * 100) + "%";
+    questionDim.textContent = q.dim;
+    questionText.textContent = q[state.track];
+
+    questionOptions.innerHTML = "";
+    q.scale.forEach(function (label, points) {
+      var option = document.createElement("label");
+      option.className = "option";
+      var isChecked = state.answers[state.index] === points;
+      if (isChecked) option.classList.add("selected");
+
+      var input = document.createElement("input");
+      input.type = "radio";
+      input.name = "answer";
+      input.value = String(points);
+      input.className = "sr-only";
+      input.checked = isChecked;
+      input.addEventListener("change", function () {
+        state.answers[state.index] = points;
+        Array.prototype.forEach.call(questionOptions.children, function (el) {
+          el.classList.remove("selected");
+        });
+        option.classList.add("selected");
+        nextBtn.disabled = false;
+      });
+
+      var dot = document.createElement("span");
+      dot.className = "dot";
+      dot.setAttribute("aria-hidden", "true");
+
+      var text = document.createElement("span");
+      text.textContent = label;
+
+      option.appendChild(input);
+      option.appendChild(dot);
+      option.appendChild(text);
+      questionOptions.appendChild(option);
+    });
+
+    nextBtn.disabled = state.answers[state.index] === null;
+    nextBtn.textContent = state.index === total - 1 ? "See results" : "Next";
+    backBtn.disabled = false;
+  }
+
+  nextBtn.addEventListener("click", function () {
+    if (state.answers[state.index] === null) return;
+    if (state.index === QUESTIONS.length - 1) {
+      renderResults();
+      showScreen("results");
+    } else {
+      state.index += 1;
+      renderQuestion();
+    }
+  });
+
+  backBtn.addEventListener("click", function () {
+    if (state.index === 0) {
+      showScreen("intro");
+    } else {
+      state.index -= 1;
+      renderQuestion();
+    }
+  });
+
+  // ---- scoring ----
+  function computeDimensionScores() {
+    var totals = { Govern: 0, Assess: 0, Evaluate: 0, Administer: 0 };
+    QUESTIONS.forEach(function (q, i) {
+      var points = state.answers[i] || 0;
+      totals[q.dim] += points;
+    });
+    var scores = {};
+    DIMENSION_ORDER.forEach(function (dim) {
+      scores[dim] = Math.round((totals[dim] / DIMENSION_POINTS_POSSIBLE[dim]) * 100);
+    });
+    return scores;
+  }
+
+  function computeOverallScore(dimScores) {
+    var sum = DIMENSION_ORDER.reduce(function (acc, dim) { return acc + dimScores[dim]; }, 0);
+    return Math.round(sum / DIMENSION_ORDER.length);
+  }
+
+  function gradeFor(score) {
+    for (var i = 0; i < GRADES.length; i++) {
+      if (score >= GRADES[i].min && score <= GRADES[i].max) return GRADES[i];
+    }
+    return GRADES[GRADES.length - 1];
+  }
+
+  function computeGaps(dimScores) {
+    var qualifying = QUESTIONS
+      .map(function (q, i) { return { q: q, index: i, points: state.answers[i] }; })
+      .filter(function (x) { return x.points !== null && x.points <= 1; })
+      .sort(function (a, b) {
+        if (a.points !== b.points) return a.points - b.points;
+        var da = DIMENSION_ORDER.indexOf(a.q.dim);
+        var db = DIMENSION_ORDER.indexOf(b.q.dim);
+        if (da !== db) return da - db;
+        return a.index - b.index;
+      });
+
+    var gaps = qualifying.slice(0, 3).map(function (x) {
+      return { source: x.q.id + " · " + x.q.dim, text: GAP_LIBRARY[x.q.id] };
+    });
+
+    if (gaps.length < 3) {
+      var sortedDims = DIMENSION_ORDER.slice().sort(function (a, b) { return dimScores[a] - dimScores[b]; });
+      var d = 0;
+      while (gaps.length < 3 && d < sortedDims.length) {
+        var dim = sortedDims[d];
+        d += 1;
+        gaps.push({ source: dim, text: DIMENSION_SUMMARY[dim] });
+      }
+    }
+
+    return gaps;
+  }
+
+  // ---- results rendering ----
+  var gradeLetterEl = document.getElementById("grade-letter");
+  var scoreNumberEl = document.getElementById("score-number");
+  var gradeLabelEl = document.getElementById("grade-label");
+  var dimsListEl = document.getElementById("dims-list");
+  var gapsListEl = document.getElementById("gaps-list");
+
+  function renderResults() {
+    var dimScores = computeDimensionScores();
+    var overall = computeOverallScore(dimScores);
+    var overallGrade = gradeFor(overall);
+
+    gradeLetterEl.innerHTML = overallGrade.grade;
+    scoreNumberEl.textContent = "Overall score: " + overall + " of 100";
+    gradeLabelEl.textContent = overallGrade.label;
+
+    dimsListEl.innerHTML = "";
+    DIMENSION_ORDER.forEach(function (dim) {
+      var score = dimScores[dim];
+      var g = gradeFor(score);
+      var row = document.createElement("div");
+      row.className = "dim-row";
+      row.innerHTML =
+        '<div class="dim-row-head">' +
+          '<span class="dim-name">' + dim + '</span>' +
+          '<span class="dim-grade">' + g.grade + ' · ' + g.label + '</span>' +
+        '</div>' +
+        '<div class="bar-track"><div class="bar-fill" style="width:' + score + '%"></div></div>' +
+        '<span class="bar-score">' + score + ' of 100</span>';
+      dimsListEl.appendChild(row);
+    });
+
+    gapsListEl.innerHTML = "";
+    computeGaps(dimScores).forEach(function (gap) {
+      var el = document.createElement("div");
+      el.className = "gap";
+      el.innerHTML =
+        '<p class="gap-source">' + gap.source + '</p>' +
+        '<p>' + gap.text + '</p>';
+      gapsListEl.appendChild(el);
+    });
+  }
+
+  printBtn.addEventListener("click", function () { window.print(); });
+
+  retakeBtn.addEventListener("click", function () {
+    state.track = null;
+    state.index = 0;
+    state.answers = new Array(QUESTIONS.length).fill(null);
+    trackCardGov.classList.remove("selected");
+    trackCardHealth.classList.remove("selected");
+    trackCardGov.querySelector("input").checked = false;
+    trackCardHealth.querySelector("input").checked = false;
+    startBtn.disabled = true;
+    showScreen("intro");
+  });
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Acceptable Use Policy Generator for NJ Government and Healthcare | 916 Consulting</title>
+<meta name="description" content="Answer about ten questions and get a starter AI acceptable use policy customized for your municipality, county agency, school district, hospital or private practice. Free tool from 916 Consulting. Not legal advice.">
+<link rel="canonical" href="https://www.916consulting.com/tools/policy-generator/">
+<meta property="og:title" content="AI Acceptable Use Policy Generator for NJ Government and Healthcare">
+<meta property="og:description" content="A free tool that assembles a starter AI acceptable use policy customized to your organization type, with counsel review flags built in.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.916consulting.com/tools/policy-generator/">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%230F3540"/><text x="32" y="44" font-family="Georgia,serif" font-size="30" text-anchor="middle" fill="%23FBFCFC">9<tspan fill="%234FAE9B">1</tspan>6</text></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #174A56; --teal: #4FAE9B; --depth: #0F3540;
+    --mist: #EEF3F2; --paper: #FBFCFC;
+    --text: #174A56; --text-dim: #56737c;
+    --line: #dde7e5; --line-strong: #c6d6d3; --card: #ffffff;
+    --shadow-card: 0 1px 2px rgba(15,53,64,0.04), 0 8px 24px rgba(15,53,64,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--paper); color: var(--text);
+    line-height: 1.68; font-size: 16px; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Marcellus", Georgia, serif; font-weight: 400; line-height: 1.16; }
+  .caps { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+  .logo { display: inline-flex; align-items: baseline; gap: 12px; text-decoration: none; color: var(--navy); }
+  .logo .numerals { font-family: "Marcellus", Georgia, serif; font-size: 1.5rem; line-height: 1; }
+  .logo .one { color: var(--teal); }
+  .logo .caption { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,252,252,0.88); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  nav.links { display: flex; gap: 24px; align-items: center; }
+  nav.links a { color: var(--text-dim); text-decoration: none; font-size: 0.86rem; font-weight: 500; }
+  nav.links a:hover { color: var(--teal); }
+  .nav-cta { color: #fff !important; background: var(--navy); padding: 8px 16px; border-radius: 6px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--depth); }
+  @media (max-width: 700px) { nav.links a:not(.nav-cta) { display: none; } }
+
+  .page-head { background: linear-gradient(180deg, var(--mist), var(--paper)); border-bottom: 1px solid var(--line); padding: 60px 0 44px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--teal); margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--teal); }
+  .page-head h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--navy); max-width: 26ch; }
+  .page-head p.lede { margin-top: 18px; color: var(--text-dim); font-size: 1rem; max-width: 62ch; }
+  .disclaimer {
+    margin-top: 22px; padding: 14px 18px; max-width: 72ch;
+    background: #fff; border: 1px solid var(--line); border-left: 2px solid var(--teal);
+    border-radius: 4px; font-size: 0.85rem; color: var(--text-dim);
+  }
+  .disclaimer strong { color: var(--navy); }
+
+  .btn-navy {
+    display: inline-block; text-decoration: none; background: var(--navy); color: #fff;
+    padding: 13px 26px; border-radius: 6px; font-weight: 600; font-size: 0.94rem;
+    border: 0; cursor: pointer; font-family: inherit;
+  }
+  .btn-navy:hover { background: var(--depth); }
+  .btn-outline {
+    display: inline-block; text-decoration: none; background: #fff; color: var(--navy);
+    padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 0.94rem;
+    border: 1px solid var(--line-strong); cursor: pointer; font-family: inherit;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* screens */
+  section.screen { display: none; }
+  section.screen.active { display: block; }
+
+  .intro-actions { margin-top: 30px; }
+
+  /* form */
+  .form-section { padding: 46px 0 70px; }
+  .qgroup {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+    box-shadow: var(--shadow-card); padding: 30px 32px; margin-bottom: 26px;
+  }
+  .qgroup h2 { font-size: 1.2rem; color: var(--navy); margin-bottom: 6px; }
+  .qgroup .qgroup-note { color: var(--text-dim); font-size: 0.86rem; margin-bottom: 22px; }
+  fieldset.field { border: 0; padding: 0; margin: 0 0 26px; min-width: 0; }
+  .field { margin-bottom: 26px; }
+  .field:last-child { margin-bottom: 0; }
+  .field > legend, .field > label.field-label {
+    display: block; font-weight: 600; color: var(--navy); font-size: 0.94rem; margin-bottom: 10px; padding: 0; width: 100%;
+  }
+  .field .hint { display: block; font-weight: 400; color: var(--text-dim); font-size: 0.82rem; margin-top: 4px; }
+  .option-grid { display: grid; gap: 10px; }
+  .option-row {
+    display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px;
+    border: 1px solid var(--line); border-radius: 4px; cursor: pointer; background: var(--paper);
+  }
+  .option-row:hover { border-color: var(--teal); }
+  .option-row input { margin-top: 3px; accent-color: var(--teal); }
+  .option-row span { font-size: 0.92rem; }
+  input[type="text"], select {
+    width: 100%; font-family: inherit; font-size: 0.94rem; padding: 12px 14px;
+    border: 1px solid var(--line-strong); border-radius: 6px; background: #fff; color: var(--text);
+  }
+  input[type="text"]:focus, select:focus { border-color: var(--teal); }
+  .error-text { color: #b1452f; font-size: 0.82rem; margin-top: 6px; display: none; }
+  .field.invalid .error-text { display: block; }
+  .field.invalid .option-row, .field.invalid input[type="text"], .field.invalid select {
+    border-color: #b1452f;
+  }
+  .form-submit-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
+  .form-status { color: #b1452f; font-size: 0.88rem; }
+
+  /* document */
+  .doc-screen { padding: 46px 0 70px; }
+  .doc-toolbar {
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    margin-bottom: 26px; padding-bottom: 22px; border-bottom: 1px solid var(--line);
+  }
+  .doc-toolbar .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .document {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+    box-shadow: var(--shadow-card); padding: 42px 46px;
+  }
+  .document .doc-header { text-align: center; margin-bottom: 30px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+  .document .doc-header .caps { color: var(--teal); }
+  .document .doc-header h2 { font-size: 1.7rem; color: var(--navy); margin: 10px 0 14px; }
+  .document .doc-meta { color: var(--text-dim); font-size: 0.86rem; }
+  .doc-section { margin-bottom: 30px; page-break-inside: avoid; }
+  .doc-section h3 {
+    font-size: 1.12rem; color: var(--navy); margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .doc-section p { margin-bottom: 10px; font-size: 0.95rem; }
+  .doc-section ul { margin: 0 0 10px 22px; }
+  .doc-section li { font-size: 0.95rem; margin-bottom: 6px; }
+  .doc-section table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .doc-section th, .doc-section td { text-align: left; padding: 8px 10px; border: 1px solid var(--line); }
+  .doc-section th { background: var(--mist); color: var(--navy); }
+  .counsel-flag {
+    border-left: 2px solid var(--teal); background: var(--mist);
+    border-radius: 0 4px 4px 0; padding: 12px 16px; margin: 12px 0; max-width: 72ch;
+  }
+  .counsel-flag .flag-label {
+    display: inline-block; color: var(--teal); font-size: 0.64rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .counsel-flag p { font-size: 0.88rem; color: var(--text-dim); margin: 0; }
+  .checklist { margin: 0 0 0 4px; list-style: none; }
+  .checklist li {
+    display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem;
+    padding: 10px 0; border-bottom: 1px solid var(--line);
+  }
+  .checklist li:last-child { border-bottom: 0; }
+  .checklist .box {
+    flex: 0 0 auto; width: 16px; height: 16px; margin-top: 2px; border: 1px solid var(--line-strong);
+    border-radius: 3px; background: #fff;
+  }
+  .doc-disclaimer-top {
+    background: var(--mist); border: 1px solid var(--line); border-left: 2px solid var(--teal);
+    border-radius: 4px; padding: 14px 18px; margin-bottom: 30px; font-size: 0.88rem; color: var(--text-dim);
+  }
+  .doc-disclaimer-top strong { color: var(--navy); }
+
+  .postdoc { padding: 50px 0 0; }
+  .postdoc .box2 {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow-card);
+    padding: 30px 32px; margin-bottom: 22px;
+  }
+  .postdoc h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 10px; }
+  .postdoc p { color: var(--text-dim); font-size: 0.92rem; max-width: 62ch; margin-bottom: 16px; }
+
+  .subscribe { background: var(--depth); color: var(--mist); padding: 64px 0; text-align: center; border-radius: 4px; }
+  .subscribe h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); color: #fff; margin-bottom: 10px; }
+  .subscribe p { color: #a9c0bd; font-size: 0.94rem; max-width: 50ch; margin: 0 auto 26px; }
+  .subscribe form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .subscribe input[type="email"] {
+    font-family: inherit; font-size: 0.92rem; padding: 13px 16px; min-width: 280px;
+    border: 1px solid rgba(79,174,155,0.4); border-radius: 6px;
+    background: rgba(238,243,242,0.06); color: #fff;
+  }
+  .subscribe input[type="email"]::placeholder { color: #7fa8a0; }
+  .subscribe button {
+    font-family: inherit; font-size: 0.92rem; font-weight: 600;
+    background: var(--teal); color: var(--depth); border: 0; border-radius: 6px;
+    padding: 13px 24px; cursor: pointer;
+  }
+  .subscribe button:hover { filter: brightness(1.08); }
+  .subscribe .fine { font-size: 0.76rem; color: #7fa8a0; margin-top: 14px; }
+
+  .contact-box {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow-card);
+    padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center;
+  }
+  .contact-box h2 { font-size: 1.25rem; color: var(--navy); }
+  .contact-box p { color: var(--text-dim); font-size: 0.9rem; max-width: 52ch; }
+
+  footer { padding: 28px 0; font-size: 0.78rem; color: var(--text-dim); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+  footer .fine { max-width: 60ch; }
+
+  .noscript-note {
+    background: var(--mist); border-bottom: 1px solid var(--line); padding: 14px 0; text-align: center; font-size: 0.88rem;
+  }
+
+  @media (max-width: 640px) {
+    .document { padding: 28px 20px; }
+    .qgroup { padding: 22px 20px; }
+  }
+
+  @media print {
+    .no-print { display: none !important; }
+    body { background: #fff; font-size: 12.5px; }
+    .wrap { max-width: 100%; padding: 0; }
+    #screen-document { display: block !important; }
+    section.screen:not(#screen-document) { display: none !important; }
+    .document { box-shadow: none; border: 0; padding: 0; }
+    .doc-toolbar, .postdoc, footer, header.site { display: none !important; }
+    .doc-section { page-break-inside: avoid; }
+    .counsel-flag { border: 1px solid #999; background: #f2f2f2; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noscript-note-wrap">
+<noscript>
+  <div class="noscript-note">
+    This tool needs JavaScript to build your policy. Please enable JavaScript, or
+    <a href="../../index.html#contact">contact 916 Consulting</a> and we will put a draft together with you directly.
+  </div>
+</noscript>
+</div>
+
+<header class="site no-print">
+  <div class="wrap nav">
+    <a class="logo" href="../../index.html" aria-label="916 Consulting home">
+      <span class="numerals">9<span class="one">1</span>6</span>
+      <span class="caption">Consulting</span>
+    </a>
+    <nav class="links">
+      <a href="../../index.html#ai">AI Oversight</a>
+      <a href="../../index.html#services">Services</a>
+      <a href="../../nj-ai-watch/index.html">NJ AI Watch</a>
+      <a href="#subscribe">Subscribe</a>
+      <a class="nav-cta" href="../../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- SCREEN 1: INTRO -->
+<section class="screen active" id="screen-intro">
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow caps">Free Tool</span>
+      <h1>Build a starter AI acceptable use policy for your organization.</h1>
+      <p class="lede">
+        Answer about ten questions about your organization and get a complete draft policy back
+        on screen in minutes, already customized for a municipality, county agency, school district,
+        hospital or private practice. Every section that needs a lawyer's judgment call is clearly
+        marked, and every flag is collected into one checklist at the end so your counsel has a
+        single list to work from.
+      </p>
+      <div class="disclaimer">
+        <strong>Before you start:</strong> this tool produces a starting point, not legal advice.
+        Have the result reviewed by your attorney before adopting it.
+      </div>
+      <div class="intro-actions">
+        <button class="btn-navy" id="btn-start" type="button">Start the questions</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 2: QUESTION FORM -->
+<section class="screen" id="screen-form">
+  <div class="wrap form-section">
+    <form id="policy-form" novalidate>
+
+      <div class="qgroup">
+        <h2>Your organization</h2>
+        <p class="qgroup-note">We start here because your organization type determines which sections of the policy apply to you.</p>
+
+        <fieldset class="field" id="field-org_type">
+          <legend>What kind of organization are you.</legend>
+          <div class="option-grid" data-name="org_type">
+            <label class="option-row"><input type="radio" name="org_type" value="municipality"><span>NJ municipality</span></label>
+            <label class="option-row"><input type="radio" name="org_type" value="county"><span>NJ county agency</span></label>
+            <label class="option-row"><input type="radio" name="org_type" value="school"><span>NJ school district</span></label>
+            <label class="option-row"><input type="radio" name="org_type" value="hospital"><span>Hospital or health system</span></label>
+            <label class="option-row"><input type="radio" name="org_type" value="practice"><span>Private or specialty practice</span></label>
+          </div>
+          <p class="error-text">Please choose an organization type.</p>
+        </fieldset>
+
+        <div class="field" id="field-org_name">
+          <label class="field-label" for="org_name">What is your organization's name.
+            <span class="hint">Used in the document header.</span>
+          </label>
+          <input type="text" id="org_name" name="org_name" maxlength="120" placeholder="For example, Township of Example">
+          <p class="error-text">Please enter your organization's name.</p>
+        </div>
+
+        <div class="field" id="field-org_size">
+          <label class="field-label" for="org_size">About how many employees.</label>
+          <select id="org_size" name="org_size">
+            <option value="">Choose one</option>
+            <option value="under25">Under 25</option>
+            <option value="25to100">25 to 100</option>
+            <option value="101to500">101 to 500</option>
+            <option value="over500">Over 500</option>
+          </select>
+          <p class="error-text">Please choose a size range.</p>
+        </div>
+      </div>
+
+      <div class="qgroup">
+        <h2>Where you are today</h2>
+        <p class="qgroup-note">This helps set the tone of the policy, from a first policy to a formal update.</p>
+
+        <div class="field" id="field-ai_status">
+          <label class="field-label" for="ai_status">Where is your organization today with AI tools.</label>
+          <select id="ai_status" name="ai_status">
+            <option value="">Choose one</option>
+            <option value="none">Not in use yet</option>
+            <option value="experimenting">A few people experimenting on their own</option>
+            <option value="departments">Approved in specific departments</option>
+            <option value="broad">Already in broad use</option>
+          </select>
+          <p class="error-text">Please choose an option.</p>
+        </div>
+
+        <fieldset class="field" id="field-data_types">
+          <legend>What kind of data does your organization handle.
+            <span class="hint">Select all that apply.</span>
+          </legend>
+          <div class="option-grid" data-name="data_types">
+            <label class="option-row"><input type="checkbox" name="data_types" value="public"><span>Public information only</span></label>
+            <label class="option-row"><input type="checkbox" name="data_types" value="resident"><span>Resident or constituent personal information</span></label>
+            <label class="option-row"><input type="checkbox" name="data_types" value="phi"><span>Protected health information</span></label>
+            <label class="option-row"><input type="checkbox" name="data_types" value="financial"><span>Financial or payment data</span></label>
+          </div>
+          <p class="error-text">Please select at least one data type.</p>
+        </fieldset>
+
+        <fieldset class="field" id="field-existing_policy">
+          <legend>Do you already have a written technology or data use policy.</legend>
+          <div class="option-grid" data-name="existing_policy">
+            <label class="option-row"><input type="radio" name="existing_policy" value="yes"><span>Yes</span></label>
+            <label class="option-row"><input type="radio" name="existing_policy" value="no"><span>No</span></label>
+          </div>
+          <p class="error-text">Please choose yes or no.</p>
+        </fieldset>
+      </div>
+
+      <div class="qgroup">
+        <h2>Governance and contact</h2>
+        <p class="qgroup-note">These answers shape the approval, responsibility and review sections of the policy.</p>
+
+        <div class="field" id="field-approver">
+          <label class="field-label" for="approver">Who currently approves a new AI tool before staff can use it.</label>
+          <select id="approver" name="approver">
+            <option value="">Choose one</option>
+            <option value="none">No one, it just happens</option>
+            <option value="it">IT alone</option>
+            <option value="it_legal">IT together with legal or compliance</option>
+            <option value="committee">A formal committee</option>
+          </select>
+          <p class="error-text">Please choose an option.</p>
+        </div>
+
+        <div class="field" id="field-contact">
+          <label class="field-label" for="contact">Who should this policy name as the point of contact for questions.
+            <span class="hint">Name and title, for example Jane Smith, IT Director.</span>
+          </label>
+          <input type="text" id="contact" name="contact" maxlength="140" placeholder="For example, Jane Smith, IT Director">
+          <p class="error-text">Please name a point of contact.</p>
+        </div>
+
+        <fieldset class="field" id="field-personal_devices">
+          <legend>Do staff use personal devices or personal AI accounts for work tasks today.</legend>
+          <div class="option-grid" data-name="personal_devices">
+            <label class="option-row"><input type="radio" name="personal_devices" value="yes"><span>Yes</span></label>
+            <label class="option-row"><input type="radio" name="personal_devices" value="no"><span>No</span></label>
+            <label class="option-row"><input type="radio" name="personal_devices" value="notsure"><span>Not sure</span></label>
+          </div>
+          <p class="error-text">Please choose an option.</p>
+        </fieldset>
+
+        <div class="field" id="field-review_cadence">
+          <label class="field-label" for="review_cadence">How often should this policy be reviewed and updated.</label>
+          <select id="review_cadence" name="review_cadence">
+            <option value="">Choose one</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="annually">Annually</option>
+            <option value="none">No set schedule yet</option>
+          </select>
+          <p class="error-text">Please choose a review cadence.</p>
+        </div>
+      </div>
+
+      <div class="form-submit-row">
+        <button class="btn-navy" type="submit">Generate my policy</button>
+        <span class="form-status" id="form-status" role="alert"></span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- SCREEN 3: DOCUMENT -->
+<section class="screen" id="screen-document">
+  <div class="wrap doc-screen">
+    <div class="doc-toolbar no-print">
+      <div>
+        <h2 style="font-size:1.3rem;color:var(--navy);">Your draft policy is ready.</h2>
+        <p style="color:var(--text-dim);font-size:0.88rem;margin-top:4px;">Review it below, then print it, save it or start a conversation with 916.</p>
+      </div>
+      <div class="actions">
+        <button class="btn-outline" type="button" id="btn-edit">Edit my answers</button>
+        <button class="btn-outline" type="button" id="btn-download">Download as text</button>
+        <button class="btn-navy" type="button" id="btn-print">Print or save as PDF</button>
+      </div>
+    </div>
+
+    <div class="document" id="printable-policy">
+      <div id="policy-output"></div>
+    </div>
+
+    <div class="postdoc no-print">
+      <div class="box2">
+        <h3>What to do with this draft.</h3>
+        <p>
+          Print it or save it as a PDF, or download the text version and paste it into your own
+          document template. Either way, route it to your attorney before adopting it. The counsel
+          review checklist at the end of the document is built for exactly that handoff.
+        </p>
+      </div>
+
+      <div class="contact-box">
+        <div>
+          <h2>Want help finishing it.</h2>
+          <p>
+            916 Consulting can turn this draft into a finished policy, work directly with your
+            counsel, and stand up the approval process behind it.
+          </p>
+        </div>
+        <a class="btn-navy" href="../../index.html#contact">Start a Conversation</a>
+      </div>
+    </div>
+
+    <section class="subscribe no-print" id="subscribe" style="margin-top:26px;">
+      <div class="wrap">
+        <h2>Get the monthly NJ AI Watch briefing.</h2>
+        <p>One email a month with what changed and what it means for your organization.
+        No spam, unsubscribe anytime.</p>
+        <form action="https://buttondown.com/api/emails/embed-subscribe/916consulting" method="post">
+          <input type="email" name="email" placeholder="you@youragency.gov" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="fine">Published by 916 Consulting, LLC. Your address is used only for this briefing.</p>
+      </div>
+    </section>
+  </div>
+</section>
+
+<footer class="no-print">
+  <div class="wrap">
+    <a class="logo" href="../../index.html" aria-label="916 Consulting home">
+      <span class="numerals">9<span class="one">1</span>6</span>
+      <span class="caption">Consulting</span>
+    </a>
+    <span class="fine">Not legal advice. Confirm current requirements with your own counsel.
+    © 2026 916 Consulting, LLC. New Jersey</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var ORG_TYPES = {
+    municipality: { label: "NJ municipality", bucket: "government" },
+    county:       { label: "NJ county agency", bucket: "government" },
+    school:       { label: "NJ school district", bucket: "government" },
+    hospital:     { label: "Hospital or health system", bucket: "healthcare" },
+    practice:     { label: "Private or specialty practice", bucket: "healthcare" }
+  };
+
+  var SIZE_LABELS = { under25: "Under 25", "25to100": "25 to 100", "101to500": "101 to 500", over500: "Over 500" };
+  var AI_STATUS_LABELS = { none: "Not in use yet", experimenting: "A few people experimenting on their own", departments: "Approved in specific departments", broad: "Already in broad use" };
+  var DATA_LABELS = { public: "Public information only", resident: "Resident or constituent personal information", phi: "Protected health information", financial: "Financial or payment data" };
+  var APPROVER_LABELS = { none: "No one, it just happens", it: "IT alone", it_legal: "IT together with legal or compliance", committee: "A formal committee" };
+  var CADENCE_LABELS = { quarterly: "Quarterly", annually: "Annually", none: "No set schedule yet" };
+
+  var DATA_TYPE_ORDER = ["public", "resident", "phi", "financial"];
+
+  var DATA_LINES = {
+    public: "General public information the organization already publishes may be used in AI tools that are on the approved tool list, consistent with the permitted uses above.",
+    resident: "Resident or constituent personal information, including names, addresses, case numbers or account details, may not be entered into an AI tool that has not been specifically approved for that purpose.",
+    phi: "Protected health information may not be entered into any AI tool unless that tool is covered by a signed agreement as described in the Data Handling and Classification section below.",
+    financial: "Financial account numbers, payment card information and payroll data may not be entered into any AI tool at any time."
+  };
+
+  var PERMITTED_EXTRA = {
+    government: "Drafting and research support for public facing communications, provided a person reviews the content before it is published or sent.",
+    healthcare: "Administrative and scheduling support that does not touch the clinical record, such as drafting appointment reminders or general correspondence."
+  };
+
+  var DATA_HANDLING = {
+    government: {
+      text: "Records created or received using AI tools while conducting public business are public records subject to the NJ Open Public Records Act unless a specific exemption applies. AI generated drafts and outputs must be retained according to the organization's Records Retention Schedule. Confidential personnel, law enforcement, or attorney client material must never be entered into a public AI tool.",
+      flag: "Confirm which specific exemptions apply and how the organization's records retention schedule covers AI generated drafts and outputs."
+    },
+    healthcare: {
+      text: "Protected health information may not be entered into any AI tool unless that tool has been reviewed and is covered by a signed Business Associate Agreement. AI generated clinical notes or summaries become part of the medical record and are subject to the same retention and access rules as any other record.",
+      flag: "Confirm signed Business Associate Agreement coverage for each AI tool in use and the applicable retention period."
+    }
+  };
+
+  var APPROVER_TEXT = {
+    none: "Today there is no formal approval step before staff begin using a new AI tool. Under this policy, that changes. No employee may begin using a new AI tool for work purposes until it has been reviewed and added to the approved tool list. The organization should name a person or office to own this review, covering data handling, storage location and vendor terms before any tool is approved.",
+    it: "New AI tools are reviewed and approved by the IT department before staff may use them for work purposes. As part of this review, IT should complete a documented security and privacy check covering data handling, storage location and vendor terms before adding a tool to the approved tool list.",
+    it_legal: "New AI tools are reviewed jointly by IT and legal or compliance staff before staff may use them for work purposes. This joint review should include a documented security and privacy check covering data handling, storage location and vendor terms, along with a review of the vendor's contract terms, before adding a tool to the approved tool list.",
+    committee: "New AI tools are reviewed and approved by a formal committee before staff may use them for work purposes. The committee's review should include a documented security and privacy check covering data handling, storage location and vendor terms before a tool is added to the approved tool list."
+  };
+
+  var CADENCE_TEXT = {
+    quarterly: "on a quarterly basis",
+    annually: "on an annual basis",
+    none: "as needed, with the organization committing to put a regular review schedule in place"
+  };
+
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function todayLong() {
+    var d = new Date();
+    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+  }
+
+  function buildPolicy(answers) {
+    var orgType = ORG_TYPES[answers.org_type];
+    var bucket = orgType.bucket;
+    var orgName = answers.org_name || "your organization";
+    var date = todayLong();
+    var sections = [];
+    var flags = [];
+
+    function addSection(num, title, bodyBuilder, flagReason) {
+      var body = bodyBuilder();
+      var sec = { num: num, title: title, body: body, flagReason: flagReason || null };
+      sections.push(sec);
+      if (flagReason) {
+        flags.push({ num: num, title: title, reason: flagReason });
+      }
+    }
+
+    // Section 1: Purpose and Scope
+    addSection(1, "Purpose and Scope", function () {
+      return {
+        type: "paragraphs",
+        items: [
+          "This Acceptable Use Policy for Artificial Intelligence tools sets expectations for how employees, contractors and volunteers of " + escapeHtml(orgName) + " may use AI tools in connection with their work.",
+          "It applies to every device, account and workflow used to conduct " + escapeHtml(orgName) + " business, whether the device is owned by " + escapeHtml(orgName) + " or personally owned.",
+          "The purpose of this policy is to allow the organization to benefit from AI tools while protecting data, records and the people the organization serves."
+        ]
+      };
+    });
+
+    // Section 2: Definitions
+    addSection(2, "Definitions", function () {
+      return {
+        type: "definitions",
+        items: [
+          { term: "AI tool", def: "Any software application that uses machine learning, natural language processing or a similar technique to generate, summarize, translate, classify or otherwise process content on behalf of a user." },
+          { term: "Generative AI", def: "A category of AI tool that creates new text, images, audio, code or other content in response to a prompt, rather than only retrieving or sorting existing content." },
+          { term: "Approved tool list", def: "The list of AI tools that " + escapeHtml(orgName) + " has reviewed and authorized for use, maintained by the office named in the Approval Process section below." }
+        ]
+      };
+    });
+
+    // Section 3: Permitted Uses
+    addSection(3, "Permitted Uses", function () {
+      var items = [
+        "Drafting internal communications, summaries and notes for personal use in completing a work task.",
+        "Researching publicly available information to support a work task.",
+        "Improving the clarity or tone of a document the employee has already written, without introducing new facts.",
+        "Using an AI tool that appears on the organization's approved tool list, within the limits described for that tool."
+      ];
+      items.push(PERMITTED_EXTRA[bucket]);
+      return { type: "list", items: items };
+    });
+
+    // Section 4: Prohibited Uses
+    addSection(4, "Prohibited Uses", function () {
+      var items = [
+        "Entering passwords, login credentials or security information into any AI tool.",
+        "Entering confidential personnel records or personnel matters into any AI tool.",
+        "Entering attorney client privileged material into any AI tool.",
+        "Entering any information the organization has classified as confidential or restricted into a public or consumer AI tool that has not been reviewed and approved."
+      ];
+      var selected = answers.data_types || [];
+      DATA_TYPE_ORDER.forEach(function (key) {
+        if (selected.indexOf(key) !== -1) {
+          items.push(DATA_LINES[key]);
+        }
+      });
+      return {
+        type: "list",
+        intro: "The following data may never be entered into an AI tool that has not been specifically reviewed and approved for that purpose.",
+        items: items
+      };
+    });
+
+    // Section 5: Data Handling and Classification
+    addSection(5, "Data Handling and Classification", function () {
+      return { type: "paragraphs", items: [DATA_HANDLING[bucket].text] };
+    }, DATA_HANDLING[bucket].flag);
+
+    // Section 6: Approval Process for New AI Tools
+    addSection(6, "Approval Process for New AI Tools", function () {
+      return { type: "paragraphs", items: [APPROVER_TEXT[answers.approver]] };
+    });
+
+    // Section 7: Employee Responsibilities and Training
+    addSection(7, "Employee Responsibilities and Training", function () {
+      var items = [
+        "Every employee, contractor and volunteer is responsible for understanding and following this policy. Questions about whether a tool or a use is permitted should be directed to " + escapeHtml(answers.contact) + ".",
+        "New employees should be introduced to this policy during onboarding, and all staff should receive periodic reminders about acceptable AI use."
+      ];
+      if (answers.personal_devices === "yes" || answers.personal_devices === "notsure") {
+        items.push("This policy applies fully to AI tools accessed through personal devices or personal accounts when those tools are used for work tasks. Staff should not assume that a personal device or a personal account falls outside this policy.");
+      }
+      return { type: "paragraphs", items: items };
+    }, "Confirm this section aligns with any existing acceptable use or device policy already in place.");
+
+    // Section 8: Vendor and Tool Requirements
+    addSection(8, "Vendor and Tool Requirements", function () {
+      return {
+        type: "paragraphs",
+        items: [
+          "Before an AI tool is added to the approved tool list, the organization should confirm in writing that the organization retains ownership of its own data, that the vendor will not use the organization's inputs to train its models without separate consent, and that the tool has passed a security review appropriate to the sensitivity of the data involved."
+        ]
+      };
+    }, "Confirm the standard contract language above matches procurement requirements.");
+
+    // Section 9: Monitoring, Incident Reporting and Review
+    addSection(9, "Monitoring, Incident Reporting and Review", function () {
+      return {
+        type: "paragraphs",
+        items: [
+          "The organization may monitor use of AI tools on organization owned devices and accounts, consistent with existing technology use policies.",
+          "Any suspected misuse of an AI tool, or any incident involving AI generated content that may contain an error, a data exposure or inappropriate content, should be reported immediately to " + escapeHtml(answers.contact) + ".",
+          "This policy will be reviewed " + CADENCE_TEXT[answers.review_cadence] + "."
+        ]
+      };
+    });
+
+    // Section 10: Enforcement and Consequences
+    addSection(10, "Enforcement and Consequences", function () {
+      return {
+        type: "paragraphs",
+        items: [
+          "Failure to follow this policy may result in disciplinary action, up to and including termination of employment or contract, consistent with the organization's existing disciplinary procedures. Any violation involving a legal or regulatory requirement may also be reported to the appropriate authority."
+        ]
+      };
+    }, "Align this section with any existing disciplinary policy and any union or civil service rules that may apply.");
+
+    // Section 11: Review and Revision History
+    addSection(11, "Review and Revision History", function () {
+      return {
+        type: "table",
+        rows: [
+          { version: "1", date: date, description: "Initial policy generated using the 916 Consulting AI Acceptable Use Policy Generator." }
+        ]
+      };
+    });
+
+    // Section 12: Counsel Review Summary
+    addSection(12, "Counsel Review Summary", function () {
+      return {
+        type: "checklist",
+        items: flags.map(function (f) {
+          return "Section " + f.num + ", " + f.title + ". " + f.reason;
+        })
+      };
+    });
+
+    return {
+      orgName: orgName,
+      orgTypeLabel: orgType.label,
+      date: date,
+      sections: sections,
+      flags: flags
+    };
+  }
+
+  function renderSectionHtml(sec) {
+    var html = '<div class="doc-section" id="doc-sec-' + sec.num + '">';
+    html += "<h3>" + sec.num + ". " + escapeHtml(sec.title) + "</h3>";
+    var b = sec.body;
+    if (b.intro) {
+      html += "<p>" + escapeHtml(b.intro) + "</p>";
+    }
+    if (b.type === "paragraphs") {
+      b.items.forEach(function (p) { html += "<p>" + p + "</p>"; });
+    } else if (b.type === "list") {
+      html += "<ul>";
+      b.items.forEach(function (li) { html += "<li>" + li + "</li>"; });
+      html += "</ul>";
+    } else if (b.type === "definitions") {
+      html += "<ul>";
+      b.items.forEach(function (d) { html += "<li><strong>" + escapeHtml(d.term) + ":</strong> " + d.def + "</li>"; });
+      html += "</ul>";
+    } else if (b.type === "table") {
+      html += "<table><thead><tr><th>Version</th><th>Date</th><th>Description</th></tr></thead><tbody>";
+      b.rows.forEach(function (r) {
+        html += "<tr><td>" + escapeHtml(r.version) + "</td><td>" + escapeHtml(r.date) + "</td><td>" + escapeHtml(r.description) + "</td></tr>";
+      });
+      html += "</tbody></table>";
+    } else if (b.type === "checklist") {
+      if (b.items.length === 0) {
+        html += "<p>No counsel review flags were raised for this document.</p>";
+      } else {
+        html += '<ul class="checklist">';
+        b.items.forEach(function (li) {
+          html += '<li><span class="box" aria-hidden="true"></span><span>' + escapeHtml(li) + "</span></li>";
+        });
+        html += "</ul>";
+      }
+    }
+    if (sec.flagReason) {
+      html += '<div class="counsel-flag"><span class="flag-label">Counsel review needed</span><p>' + escapeHtml(sec.flagReason) + "</p></div>";
+    }
+    html += "</div>";
+    return html;
+  }
+
+  function renderPolicy(policy) {
+    var out = "";
+    out += '<div class="doc-header">';
+    out += '<span class="caps">916 Consulting</span>';
+    out += "<h2>AI Acceptable Use Policy</h2>";
+    out += '<div class="doc-meta">Prepared for ' + escapeHtml(policy.orgName) + " (" + escapeHtml(policy.orgTypeLabel) + ")<br>Prepared on " + escapeHtml(policy.date) + "</div>";
+    out += "</div>";
+    out += '<div class="doc-disclaimer-top"><strong>Read this first:</strong> this document is a starting point, not legal advice. Have it reviewed by your attorney before adopting it.</div>';
+    policy.sections.forEach(function (sec) {
+      out += renderSectionHtml(sec);
+    });
+    document.getElementById("policy-output").innerHTML = out;
+  }
+
+  function policyToText(policy) {
+    var lines = [];
+    lines.push("AI ACCEPTABLE USE POLICY");
+    lines.push("Prepared for " + policy.orgName + " (" + policy.orgTypeLabel + ")");
+    lines.push("Prepared on " + policy.date);
+    lines.push("");
+    lines.push("This document is a starting point, not legal advice. Have it reviewed by your attorney before adopting it.");
+    lines.push("");
+    policy.sections.forEach(function (sec) {
+      lines.push(sec.num + ". " + sec.title.toUpperCase());
+      var b = sec.body;
+      if (b.intro) lines.push(stripTags(b.intro));
+      if (b.type === "paragraphs") {
+        b.items.forEach(function (p) { lines.push(stripTags(p)); });
+      } else if (b.type === "list") {
+        b.items.forEach(function (li) { lines.push("- " + stripTags(li)); });
+      } else if (b.type === "definitions") {
+        b.items.forEach(function (d) { lines.push(d.term + ": " + stripTags(d.def)); });
+      } else if (b.type === "table") {
+        b.rows.forEach(function (r) { lines.push("Version " + r.version + ", " + r.date + ", " + r.description); });
+      } else if (b.type === "checklist") {
+        if (b.items.length === 0) {
+          lines.push("No counsel review flags were raised for this document.");
+        } else {
+          b.items.forEach(function (li) { lines.push("[ ] " + li); });
+        }
+      }
+      if (sec.flagReason) {
+        lines.push("COUNSEL REVIEW NEEDED: " + sec.flagReason);
+      }
+      lines.push("");
+    });
+    lines.push("Prepared using the 916 Consulting AI Acceptable Use Policy Generator.");
+    lines.push("Not legal advice. Confirm current requirements with your own counsel.");
+    return lines.join("\n");
+  }
+
+  function stripTags(s) {
+    var div = document.createElement("div");
+    div.innerHTML = s;
+    return div.textContent || div.innerText || "";
+  }
+
+  // ---- screen navigation ----
+  function showScreen(id) {
+    document.querySelectorAll("section.screen").forEach(function (s) {
+      s.classList.toggle("active", s.id === id);
+    });
+    window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+  }
+
+  document.getElementById("btn-start").addEventListener("click", function () {
+    showScreen("screen-form");
+  });
+
+  document.getElementById("btn-edit").addEventListener("click", function () {
+    showScreen("screen-form");
+  });
+
+  // ---- form validation and submit ----
+  var form = document.getElementById("policy-form");
+  var status = document.getElementById("form-status");
+  var currentPolicy = null;
+
+  function getRadioValue(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : "";
+  }
+  function getCheckboxValues(name) {
+    return Array.prototype.slice.call(form.querySelectorAll('input[name="' + name + '"]:checked')).map(function (el) { return el.value; });
+  }
+  function getFieldValue(id) {
+    return document.getElementById(id).value.trim();
+  }
+
+  function setInvalid(fieldId, invalid) {
+    var el = document.getElementById(fieldId);
+    if (el) el.classList.toggle("invalid", invalid);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var answers = {
+      org_type: getRadioValue("org_type"),
+      org_name: getFieldValue("org_name"),
+      org_size: getFieldValue("org_size"),
+      ai_status: getFieldValue("ai_status"),
+      data_types: getCheckboxValues("data_types"),
+      existing_policy: getRadioValue("existing_policy"),
+      approver: getFieldValue("approver"),
+      contact: getFieldValue("contact"),
+      personal_devices: getRadioValue("personal_devices"),
+      review_cadence: getFieldValue("review_cadence")
+    };
+
+    var valid = true;
+    setInvalid("field-org_type", !answers.org_type); if (!answers.org_type) valid = false;
+    setInvalid("field-org_name", !answers.org_name); if (!answers.org_name) valid = false;
+    setInvalid("field-org_size", !answers.org_size); if (!answers.org_size) valid = false;
+    setInvalid("field-ai_status", !answers.ai_status); if (!answers.ai_status) valid = false;
+    setInvalid("field-data_types", answers.data_types.length === 0); if (answers.data_types.length === 0) valid = false;
+    setInvalid("field-existing_policy", !answers.existing_policy); if (!answers.existing_policy) valid = false;
+    setInvalid("field-approver", !answers.approver); if (!answers.approver) valid = false;
+    setInvalid("field-contact", !answers.contact); if (!answers.contact) valid = false;
+    setInvalid("field-personal_devices", !answers.personal_devices); if (!answers.personal_devices) valid = false;
+    setInvalid("field-review_cadence", !answers.review_cadence); if (!answers.review_cadence) valid = false;
+
+    if (!valid) {
+      status.textContent = "Please answer every question above before generating your policy.";
+      var firstInvalid = form.querySelector(".field.invalid");
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    status.textContent = "";
+    currentPolicy = buildPolicy(answers);
+    renderPolicy(currentPolicy);
+    showScreen("screen-document");
+  });
+
+  // ---- print ----
+  document.getElementById("btn-print").addEventListener("click", function () {
+    window.print();
+  });
+
+  // ---- download as text ----
+  document.getElementById("btn-download").addEventListener("click", function () {
+    if (!currentPolicy) return;
+    var text = policyToText(currentPolicy);
+    var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    var fileName = (currentPolicy.orgName || "organization").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+    a.href = url;
+    a.download = "ai_acceptable_use_policy_" + (fileName || "draft") + ".txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  });
+
+})();
+</script>
+
+</body>
+</html>
